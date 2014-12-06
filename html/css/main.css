@@ -1,0 +1,47 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 6, 2014, 4:16:44 PM
+    Author     : vadimilyasov
+*/
+
+.bar {
+    padding: 1em 0em;
+    background-color: #FFFFFF;
+    border-bottom: 1px solid #DDDDDD;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.04);
+}
+
+.bar .logo {
+  float: left;
+  width: 35px;
+  margin-right: 1em;
+}
+
+.bar .logo .side {
+  width: 35px;
+}
+
+.secondary.network.menu {
+    margin-top: 0;
+}
+
+.pusher > .footer {
+    margin: 0em;
+    border-radius: 0em;
+    padding: 4em 0em;
+    clear: both;
+    box-shadow: none;
+}
+
+.footer .container {
+    width: 850px;
+    margin: 0 auto;
+}
+
+.footer .logo {
+    width: 200px;
+}
