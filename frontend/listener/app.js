@@ -33,10 +33,21 @@ app.get('/', function (req, res) {
 });
 
 io.sockets.on('connection', function (socket) {
-    socket.on('news', function (data) {
+    
+    setTimeout(function(){ 
+        socket.emit('news', { content: 'Hello World!!!' }); 
+    }, 3000);
+    
+    
+    socket.on('news', function (data) {        
         socket.emit('news', { content: data.text });
         socket.broadcast.emit('news', { content: data.text});
     });
+         
+    socket.on('scorechanged', function (data) {
+            console.log(data);
+    });
+    
 });
 
 

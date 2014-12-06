@@ -187,6 +187,11 @@
           sessionId = socket.io.engine.id;
           console.log('Connected ' + sessionId);
         });
+        
+        socket.on('news', function (data) {
+            console.log(data);
+            socket.emit('scorechanged', { my: 'data' });
+        });
       }
 
       $(document).on('ready', init);
