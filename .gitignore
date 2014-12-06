@@ -13,4 +13,5 @@ public/assets
 public/**/*.html
 listenet/pids
 listener/logs
+listener/node_modules
 
