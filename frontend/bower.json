@@ -1,0 +1,12 @@
+{
+  "name": "erudite",
+  "version": "0.0.0",
+  "authors": [
+    "CodeTiburon Hackathon <hackathon@codetiburon.com>"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "lodash": "~2.4.1",
+    "semantic-ui": "~1.1.2"
+  }
+}
