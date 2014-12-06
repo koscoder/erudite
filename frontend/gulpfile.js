@@ -20,8 +20,9 @@ var src = configPaths.src;
 var vendorScripts = configVendors.scripts;
 var vendorStyles = configVendors.styles;
 
-gulp.task('html', function () {
-  gulp.src(src + '/html')
+gulp.task('static', function () {
+  var staticsPath = src + '/static/**/*';
+  gulp.src(staticsPath)
     .pipe(gulp.dest(publicDir));
 });
 
@@ -73,6 +74,6 @@ gulp.task('watch/styl', function () {
 
 gulp.task('watch', ['watch/jsx', 'watch/styl']);
 gulp.task('vendors', ['vendors/js', 'vendors/css']);
-gulp.task('fast-build', ['html', 'jsx', 'stylus']);
+gulp.task('fast-build', ['static', 'jsx', 'stylus']);
 gulp.task('build', ['vendors', 'fast-build']);
 gulp.task('default', ['build', 'watch']);
