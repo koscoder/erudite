@@ -1,0 +1,9 @@
+{
+  "scripts": [
+    "./bower_components/lodash/dist/lodash.min.js",
+    "./bower_components/semantic-ui/dist/semantic.min.js"
+  ],
+  "styles": [
+    "./bower_components/semantic-ui/dist/semantic.min.css"
+  ]
+}

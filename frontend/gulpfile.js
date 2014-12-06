@@ -7,13 +7,22 @@ var concat = require('gulp-concat');
 var globalShim = require('browserify-global-shim');
 var watch = require('gulp-watch');
 
-var dest = '../public/assets';
-var src = './source';
-var vendors = './bower_components';
+// Settings
+var configVendors = require('./config/vendors.json');
+var configPaths = require('./config/paths.json');
+
+// Paths
+var publicDir = configPaths.public; 
+var assets = configPaths.assets;
+var src = configPaths.src;
+
+// Vendors
+var vendorScripts = configVendors.scripts;
+var vendorStyles = configVendors.styles;
 
 gulp.task('html', function () {
   gulp.src(src + '/html')
-    .pipe(gulp.dest(dest));
+    .pipe(gulp.dest(publicDir));
 });
 
 gulp.task('jsx', function(){
@@ -30,7 +39,7 @@ gulp.task('jsx', function(){
   b.add(src + '/jsx/app.jsx');
   return b.bundle()
     .pipe(source('app.js'))
-    .pipe(gulp.dest(dest));
+    .pipe(gulp.dest(assets));
 });
 
 gulp.task('stylus', function () {
@@ -39,24 +48,19 @@ gulp.task('stylus', function () {
     ])
     .pipe(stylus())
     .pipe(concat('app.css'))
-    .pipe(gulp.dest(dest));
+    .pipe(gulp.dest(assets));
 });
 
 gulp.task('vendors/js', function () {
-  return gulp.src([
-      vendors + '/lodash/dist/lodash.min.js',
-      vendors + '/semantic-ui/dist/semantic.min.js'
-    ])
+  return gulp.src(vendorScripts)
     .pipe(concat('vendors.js'))
-    .pipe(gulp.dest(dest));
+    .pipe(gulp.dest(assets));
 });
 
 gulp.task('vendors/css', function () {
-  return gulp.src([
-      vendors + 'semantic-ui/dist/semantic.min.css'
-    ])
+  return gulp.src(vendorStyles)
     .pipe(concat('vendors.css'))
-    .pipe(gulp.dest(dest));
+    .pipe(gulp.dest(assets));
 });
 
 gulp.task('watch/jsx', function () {
