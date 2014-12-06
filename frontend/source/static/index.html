@@ -11,6 +11,24 @@
 <div id="app"></div>
 <script src="./assets/vendors.js"></script>
 <script src="./assets/app.js"></script>
+<script type="text/javascript">
+// TEST
 
+function init() {
+	var serverBaseUrl = document.domain+":8080";
+
+	var socket = io.connect(serverBaseUrl);
+
+	var sessionId = '';
+
+	socket.on('connect', function () {
+    		sessionId = socket.io.engine.id;
+    		console.log('Connected ' + sessionId);    
+  	});
+}
+
+$(document).on('ready', init);
+
+</script>
 </body>
 </html>
