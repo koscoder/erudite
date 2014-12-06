@@ -72,7 +72,11 @@ gulp.task('watch/styl', function () {
   gulp.watch(src + '/stylus/**/*.styl', ['stylus']);
 });
 
-gulp.task('watch', ['watch/jsx', 'watch/styl']);
+gulp.task('watch/static', function () {
+  gulp.watch(src + '/static/**/*', ['static']);
+});
+
+gulp.task('watch', ['watch/jsx', 'watch/styl', 'watch/static']);
 gulp.task('vendors', ['vendors/js', 'vendors/css']);
 gulp.task('fast-build', ['static', 'jsx', 'stylus']);
 gulp.task('build', ['vendors', 'fast-build']);
