@@ -70,9 +70,24 @@ gulp.task('vendors/css', function () {
 });
 
 gulp.task('vendors/assets', function () {
-  gulp.src(assetsSources)
-    .pipe(rename({dirname: ''}))
-    .pipe(gulp.dest(assets));
+  for (var assetSrc in assetsSources) {
+    var assetName, assetDir;
+    var assetDst = assetsSources[assetSrc];
+    var separatorIndex = assetDst.indexOf('/');
+
+    if (separatorIndex === -1) {
+      assetName = assetDst;
+      assetDir = '';
+    } else {
+      assetName = assetDst.slice(separatorIndex + 1);
+      assetDir = assetDst.slice(0, separatorIndex);
+    }
+
+    console.log([assetName, assetDir]);
+    gulp.src(assetSrc)
+      .pipe(rename(assetName))
+      .pipe(gulp.dest(assets + '/' + assetDir));
+  }
 });
 
 gulp.task('watch/jsx', function () {

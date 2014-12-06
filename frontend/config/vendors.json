@@ -9,7 +9,7 @@
   "styles": [
     "./bower_components/semantic-ui/dist/semantic.min.css"
   ],
-  "assets": [
-    "./bower_components/jquery/dist/jquery.min.map"
-  ]
+  "assets": {
+    "./bower_components/jquery/dist/jquery.min.map": "/jquery.min.map"
+  }
 }
