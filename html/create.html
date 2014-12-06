@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create New Game</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" type="text/css" class="ui" href="/html/dist/semantic.min.css">
+        <link rel="stylesheet" type="text/css" class="ui" href="/html/css/main.css">
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script src="/html/dist/semantic.min.js"></script>
+        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            google.load("visualization", "1", {packages: ["geochart"]});
+            google.setOnLoadCallback(drawRegionsMap);
+
+            function drawRegionsMap() {
+
+                var data = google.visualization.arrayToDataTable([
+                    ['Country', 'Clickable'],
+                    ['Germany', 1],
+                    ['United States', 1],
+                    ['Brazil', 1],
+                    ['Canada', 1],
+                    ['France', 1],
+                    ['RU', 1]
+                ]);
+
+                var options = {};
+
+                var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+                chart.draw(data, options);
+            }
+        </script>
+    </head>
+    <body>
+        <script>
+            $(document).ready(function() {
+                $('.ui.checkbox').checkbox();
+                $('select.dropdown').dropdown();
+            });
+        </script>
+        <div class="pusher">
+            <div class="full height">
+                <div class="bar light fixed">
+                    <div class="ui page grid">
+                        <div class="column">
+                            <div class="ui logo shape">
+                                <div class="sides">
+                                    <div class="ui side active">
+                                        <img class="ui image" src="/html/images/logo.png">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="ui right floated secondary menu">
+                                <div class="ui floating link item">
+                                    <div class="text">Logout</div>
+                                </div>
+                            </div>
+
+                            <div class="ui large secondary network menu">
+                                <a class="view-ui item transition animating scale in" href="index.html"><i class="cube icon"></i> Games</a>
+                                <a class="view-ui item transition animating scale in active"><i class="plus icon"></i> Create Game</a>
+                                <a class="view-ui item transition animating scale in"><i class="empty star icon"></i> Ratings</a>
+                                <span class="additional item transition animating scale in"><i class="puzzle icon"></i> Topics</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="ui vertical feature segment">
+                    <div class="ui centered page grid">
+                        <div class="sixteen wide column">
+                            <h1>Create New Game</h1>
+                            <div class="ui form">
+                                <h4 class="ui dividing header">Game Information</h4>
+                                <div class="two fields">
+                                    <div class="field">
+                                        <label>Title</label>
+                                        <input type="text" name="title" placeholder="Game title" />
+                                    </div>
+                                    <div class="field">
+                                        <div class="two fields">
+                                            <div class="field">
+                                                <label>Game Type</label>
+                                                <select class="ui dropdown" name="type">
+                                                    <option value="">[ Select Game Type ]</option>
+                                                    <option value="1">Short game</option>
+                                                    <option value="2">Standard game</option>
+                                                    <option value="3">Long game</option>
+                                                </select>
+                                            </div>
+                                            <div class="field">
+                                                <label>Max number of players</label>
+                                                <input type="text" name="players" placeholder="Max # of players" value="5" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4 class="ui dividing header">Topics and Countries</h4>
+                                <div class="field">
+                                    <div class="sixteen wide column">
+                                        <div class="ui stackable inverted divided relaxed grid">
+                                            <div class="four wide column">
+                                                <div class="field">
+                                                    <label>Topics</label>
+                                                    <div class="field">
+                                                        <div class="ui toggle checkbox">
+                                                            <input type="checkbox" />
+                                                            <label>Films</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="ui toggle checkbox">
+                                                            <input type="checkbox" />
+                                                            <label>History</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="ui toggle checkbox">
+                                                            <input type="checkbox" />
+                                                            <label>Politics</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="ui toggle checkbox">
+                                                            <input type="checkbox" />
+                                                            <label>Music</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="ui toggle checkbox">
+                                                            <input type="checkbox" />
+                                                            <label>Arts</label>
+                                                        </div>
+                                                    </div>
+                                                    <div class="field">
+                                                        <div class="ui toggle checkbox">
+                                                            <input type="checkbox" />
+                                                            <label>Books</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="twelve wide column">
+                                                <div class="field">
+                                                    <label>Countries</label>
+                                                    <div id="regions_div" style="width: 100%; height: 500px;"></div>
+                                                </div>
+                                            </div>    
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="ui error message">
+                                    <div class="header">We noticed some issues</div>
+                                </div>
+                                <div class="ui submit button" onclick="$(this).parent().addClass('loading');">Create</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui vertical inverted black footer segment">
+
+                <div class="ui centered page grid">
+                    <div class="sixteen wide column">
+                        <div class="ui stackable inverted divided relaxed grid">
+                            <div class="eight wide column logo">
+                                <h3 class="ui inverted header">Developed by CodeTiburon</h3>
+                                <p>For the world's first global virtual #hackathon</p>
+                                <p><i>No matter how good your existing software is, we can make it better.</i></p>
+                                <a href="http://codetiburon.com/" target="_blank"><img class="ui image logo" src="images/logo-footer.png" /></a>
+                            </div>
+                            <div class="four wide column">
+                                <h5 class="ui teal inverted header">About</h5>
+                                <div class="ui inverted link list">
+                                    <a class="item" href="https://github.com/CodeTiburon/erudite" target="_blank"><i class="github square icon"></i> GitHub</a>
+                                    <a class="item" href="#" target="_blank">About Project</a>
+                                    <a class="item" href="#" target="_blank"><i class="linkedin square icon"></i> Stas</a>
+                                    <a class="item" href="#" target="_blank"><i class="linkedin square icon"></i> Konstantin</a>
+                                    <a class="item" href="#" target="_blank"><i class="linkedin square icon"></i> Vadim</a>
+                                </div>
+                            </div>
+                            <div class="four wide column">
+                                <h5 class="ui teal inverted header">APIs</h5>
+                                <div class="ui inverted link list">
+                                    <a class="item" href="https://developers.google.com/chart/" target="_blank">Google Charts</a>
+                                    <a class="item" href="https://developers.google.com/freebase/v1/mql-overview" target="_blank">Google Freebase</a>
+                                    <a class="item" href="https://gravatar.com" target="_blank">Gravatar</a>
+                                    <a class="item" href="https://dev.twitter.com/web/sign-in" target="_blank">Sign in with Twitter</a>
+                                    <a class="item" href="https://developers.facebook.com/docs/facebook-login/v2.2" target="_blank">Facebook Login</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
