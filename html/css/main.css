@@ -45,3 +45,8 @@ and open the template in the editor.
 .footer .logo {
     width: 200px;
 }
+
+.game-board .segment {
+    min-height: 500px;
+    padding-top: 230px;
+}
