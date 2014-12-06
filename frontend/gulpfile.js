@@ -33,11 +33,12 @@ gulp.task('jsx', function(){
   });
   var globalShimTransform = globalShim.configure({
     'react': 'React',
-    'lodash': '_'
+    'lodash': '_',
+    'page': 'page'
   });
   b.transform(reactify);
   b.transform(globalShimTransform);
-  b.add(src + '/jsx/app.jsx');
+  b.add(src + '/jsx/router.jsx');
   return b.bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest(assets));

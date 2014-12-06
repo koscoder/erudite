@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "",
   "scripts": {
-    "install": "bower install && gulp build"
+    "install": "node ./node_modules/bower/bin/bower install && node ./node_modules/gulp/bin/gulp.js build"
   },
   "main": "index.js",
   "author": "",
