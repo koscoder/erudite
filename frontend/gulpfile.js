@@ -6,6 +6,7 @@ var stylus = require('gulp-stylus');
 var concat = require('gulp-concat');
 var globalShim = require('browserify-global-shim');
 var watch = require('gulp-watch');
+var rename = require('gulp-rename');
 
 // Settings
 var configVendors = require('./config/vendors.json');
@@ -15,16 +16,19 @@ var configPaths = require('./config/paths.json');
 var publicDir = configPaths.public; 
 var assets = configPaths.assets;
 var src = configPaths.src;
+var configDir = configPaths.config;
 
 // Vendors
 var vendorScripts = configVendors.scripts;
 var vendorStyles = configVendors.styles;
+var assetsSources = configVendors.assets;
 
 gulp.task('static', function () {
   var staticsPath = src + '/static/**/*';
   gulp.src(staticsPath)
     .pipe(gulp.dest(publicDir));
 });
+
 
 gulp.task('jsx', function(){
   var b = browserify({
@@ -65,6 +69,12 @@ gulp.task('vendors/css', function () {
     .pipe(gulp.dest(assets));
 });
 
+gulp.task('vendors/assets', function () {
+  gulp.src(assetsSources)
+    .pipe(rename({dirname: ''}))
+    .pipe(gulp.dest(assets));
+});
+
 gulp.task('watch/jsx', function () {
   gulp.watch(src + '/jsx/**/*.jsx', ['jsx']);
 });
@@ -77,8 +87,12 @@ gulp.task('watch/static', function () {
   gulp.watch(src + '/static/**/*', ['static']);
 });
 
+gulp.task('watch/vendors', function () {
+  gulp.watch(configDir + '/vendors.json', ['vendors']);
+});
+
 gulp.task('watch', ['watch/jsx', 'watch/styl', 'watch/static']);
-gulp.task('vendors', ['vendors/js', 'vendors/css']);
+gulp.task('vendors', ['vendors/js', 'vendors/css', 'vendors/assets']);
 gulp.task('fast-build', ['static', 'jsx', 'stylus']);
 gulp.task('build', ['vendors', 'fast-build']);
 gulp.task('default', ['build', 'watch']);
