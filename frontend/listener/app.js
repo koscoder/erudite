@@ -22,7 +22,7 @@ var express = require("express")
 app.set("port", 8080);
 
 //Server's IP address
-app.set("ipaddr", "127.0.0.1");
+app.set("ipaddr", "0.0.0.0");
 
 //Tells server to support JSON requests
 app.use(bodyParser.json());
