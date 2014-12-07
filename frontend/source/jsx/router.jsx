@@ -5,6 +5,7 @@ var acl = require('./acl.jsx');
 var LoadingPage = require('./loading/loading.jsx');
 var LoginPage = require('./login/login.jsx');
 var LobbyPage = require('./lobby/lobby.jsx');
+var NotExistsPage = require('./404/404.jsx');
 
 var route = function (url) {
   var chain = window.Array.prototype.slice.call(arguments, 1);
@@ -13,15 +14,15 @@ var route = function (url) {
 
 var init = function (changePage) {
   route('/', function () {
-    changePage(LobbyPage);
+    changePage(<LobbyPage />);
   });
 
   route('/login', function () {
-    changePage(LoginPage);
+    changePage(<LoginPage />);
   });
 
   route('/404', function (ctx) {
-    console.log('404', arguments);
+    changePage(<NotExistsPage />);
   });
 
   route('/index.html', function () {
@@ -37,7 +38,17 @@ var init = function (changePage) {
     hashbang: true
   });
 
-  return LoadingPage;
+  setTimeout(function () {
+    var hash = window.location.hash;
+    if (hash.indexOf('#!') === 0) {
+      console.log(hash.slice(2));
+      page(hash.slice(2));
+    } else {
+      page('#');
+    }
+  }, 1);
+  
+  return <LoadingPage />;
 }
 
 module.exports = init;
