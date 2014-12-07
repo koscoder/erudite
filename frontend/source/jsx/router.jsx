@@ -30,6 +30,10 @@ var init = function (changePage) {
     page.redirect('#');
   });
 
+  route('/game', function () {
+    page.redirect('#');
+  });
+
   route('*', function () {
     changePage(<NotExistsPage />);
   });
