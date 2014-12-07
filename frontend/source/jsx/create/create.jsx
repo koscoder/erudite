@@ -1,9 +1,13 @@
 var React = require('react');
+var page = require('page');
 var $ = require('jQuery');
 var template = require('./create.view.jsx');
 
 var Create = React.createClass({
   render: template,
+  handleCreate: function () {
+    page('/game');
+  },
   componentDidMount: function () {
     this._initCheckboxes();
     this._initDropdowns();

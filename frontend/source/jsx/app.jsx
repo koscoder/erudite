@@ -1,3 +1,4 @@
+var Storage = require('./storage.js'); // Must be on the top
 var React = require('react');
 var router = require('./router.jsx');
 

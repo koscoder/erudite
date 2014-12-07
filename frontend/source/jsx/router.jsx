@@ -7,6 +7,7 @@ var LoginPage = require('./login/login.jsx');
 var LobbyPage = require('./lobby/lobby.jsx');
 var NotExistsPage = require('./404/404.jsx');
 var Create = require('./create/create.jsx');
+var Game = require('./game/game.jsx');
 
 var route = function (url) {
   var chain = window.Array.prototype.slice.call(arguments, 1);
@@ -24,6 +25,10 @@ var init = function (changePage) {
 
   route('/create', function () {
     changePage(<Create />);
+  });
+
+  route('/game/:id', function (ctx) {
+    changePage(<Game id={ctx.params.id} />);
   });
 
   route('/index.html', function () {

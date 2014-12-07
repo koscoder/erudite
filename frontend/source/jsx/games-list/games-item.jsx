@@ -1,10 +1,18 @@
 var React = require('react');
 var page = require('page');
+var Storage = require('storage');
 var template = require('./games-item.view.jsx');
 
 var GamesItem = React.createClass({
-  componentWillMount: function () {
-    this.setState({game: this.props.game});
+  getInitialState: function () {
+    var gameId = this.props.id;
+    var model = Storage.getGame(gameId);
+    model.on('change', (function (ctx) {
+      return function () {
+        ctx.setState({game: model.attributes});
+      };
+    })(this));
+    return {game: model.attributes};
   },
   render: template,
   handlerJoin: function () {

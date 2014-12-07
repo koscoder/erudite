@@ -33,13 +33,17 @@ gulp.task('static', function () {
 gulp.task('jsx', function(){
   var b = browserify({
     ignoreGlobals: true,
-    extensions: ['.jsx']
+    extensions: ['.jsx', '.js']
   });
   var globalShimTransform = globalShim.configure({
     'react': 'React',
     'lodash': '_',
     'page': 'page',
-    'jQuery': 'jQuery'
+    'jQuery': 'jQuery',
+    'storage': 'Store',
+    'backbone': 'Backbone',
+    'backbone/model': 'Backbone.Model',
+    'backbone/collection': 'Backbone.Collection'
   });
   b.transform(reactify);
   b.transform(globalShimTransform);

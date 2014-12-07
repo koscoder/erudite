@@ -91,7 +91,7 @@ module.exports = function () {
         <div className="ui error message">
           <div className="header">We noticed some issues</div>
         </div>
-        <div className="ui submit button" onclick="$(this).parent().addClass('loading');">Create</div>
+        <div className="ui submit button" onClick={this.handleCreate}>Create</div>
       </div>
     </DefaultLayout>
   );
