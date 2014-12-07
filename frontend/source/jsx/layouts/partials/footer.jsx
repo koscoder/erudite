@@ -4,7 +4,7 @@ var template = require('./footer.view.jsx');
 
 var Footer = React.createClass({
   render: function () {
-    return template();
+    return template.call(this);
   }
 });
 

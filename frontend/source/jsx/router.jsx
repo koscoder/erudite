@@ -41,7 +41,6 @@ var init = function (changePage) {
   setTimeout(function () {
     var hash = window.location.hash;
     if (hash.indexOf('#!') === 0) {
-      console.log(hash.slice(2));
       page(hash.slice(2));
     } else {
       page('#');
