@@ -6,10 +6,16 @@ module.exports = [
     playersMax: 5,
     players: [
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/stevie.jpg',
             username: "Stevie Feliciano"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/jenny.jpg',
             username: "Jenny Hess"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/veronika.jpg',
             username: "Veronika Ossi"}
     ],
     room: 'thief',
@@ -23,6 +29,8 @@ module.exports = [
     status: 'waiting',
     players: [
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/jenny.jpg',
             username: "Jenny Hess"}
     ],
     playersMax: 5,
@@ -37,8 +45,12 @@ module.exports = [
     status: 'progress',
     players: [
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/daniel.jpg',
             username: "Daniel Louise"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/veronika.jpg',
             username: "Veronika Ossi"}
     ],
     playersMax: 4,
@@ -53,12 +65,20 @@ module.exports = [
     status: 'progress',
     players: [
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/daniel.jpg',
             username: "Daniel Louise"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/stevie.jpg',
             username: "Stevie Feliciano"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/jenny.jpg',
             username: "Jenny Hess"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/veronika.jpg',
             username: "Veronika Ossi"}
     ],
     playersMax: 6,
@@ -73,6 +93,8 @@ module.exports = [
     status: 'waiting',
     players: [
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/veronika.jpg',
             username: "Veronika Ossi"}
     ],
     playersMax: 5,
@@ -87,8 +109,12 @@ module.exports = [
     status: 'waiting',
     players: [
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/jenny.jpg',
             username: "Jenny Hess"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/veronika.jpg',
             username: "Veronika Ossi"}
     ],
     playersMax: 5,
@@ -103,8 +129,12 @@ module.exports = [
     status: 'progress',
     players: [
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/daniel.jpg',
             username: "Daniel Louise"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/jenny.jpg',
             username: "Jenny Hess"}
     ],
     playersMax: 4,
@@ -119,12 +149,20 @@ module.exports = [
     status: 'progress',
     players: [
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/elliot.jpg',
             username: "Elliot Fu"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/jenny.jpg',
             username: "Jenny Hess"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/veronika.jpg',
             username: "Veronika Ossi"},
         {id: Math.floor(Math.random() * 10000),
+            score: 0,
+            avatar: 'http://semantic-ui.com/images/avatar/small/stevie.jpg',
             username: "Stevie Feliciano"}
     ],
     playersMax: 6,

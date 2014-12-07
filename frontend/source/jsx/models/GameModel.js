@@ -22,6 +22,10 @@ var GameModel = BackboneModel.extend({
     started: false
   },
 
+  getUsers: function () {
+    return this.get('players');
+  },
+
   GAME_WAITING: GAME_WAITING,
   GAME_PROGRESS: GAME_PROGRESS,
   GAME_CLOSED: GAME_CLOSED,
