@@ -4,13 +4,7 @@ var template = require('./default.view.jsx');
 
 var DefaultLayout = React.createClass({
   render: function () {
-    return template.apply(this);
-  },
-  handleHomeLink: function () {
-    page('#');
-  },
-  handleLoginLink: function () {
-    page('/login');
+    return template.call(this);
   }
 });
 

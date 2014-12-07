@@ -3,7 +3,7 @@ var template = require('./lobby.view.jsx');
 
 var LobbyPage = React.createClass({
   render: function () {
-    return template.apply(this);
+    return template.call(this);
   }
 });
 

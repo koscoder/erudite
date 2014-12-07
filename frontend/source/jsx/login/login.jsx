@@ -3,7 +3,7 @@ var template = require('./login.view.jsx');
 
 var LoginPage = React.createClass({
   render: function () {
-    return template.apply(this);
+    return template.call(this);
   }
 });
 

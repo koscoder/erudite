@@ -4,10 +4,19 @@ var template = require('./navigation.view.jsx');
 
 var Navigation = React.createClass({
   render: function () {
-    return template();
+    return template.call(this);
   },
   handleHomeLink: function () {
     page('#');
+  },
+  handleCreateLink: function () {
+    page('/create');
+  },
+  handleRatingLink: function () {
+    page('/rating');
+  },
+  handleTopicsLink: function () {
+    page('/topics');
   }
 });
 

@@ -4,7 +4,10 @@ var template = require('./logo.view.jsx');
 
 var Logo = React.createClass({
   render: function () {
-    return template();
+    return template.call(this);
+  },
+  handleClickBanner: function () {
+    page('#');
   }
 });
 
