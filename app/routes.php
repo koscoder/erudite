@@ -25,13 +25,20 @@ Route::post('login', array('uses' => 'HomeController@doLogin'));
 // route to process the form
 Route::get('logout', array('uses' => 'HomeController@doLogout'));
 
-
-Route::group(array('before' => 'hasname'), function()
+//TODO: change filter to auth
+Route::group(array('before' => 'auth.hasname'), function()
 {
     // route to show game list
     Route::get('games', array('uses' => 'GameController@index'));
 
     
+});
+
+// Route group for API 
+Route::group(array('prefix' => 'api', 'before' => 'auth.hasname'), function()
+{
+    // route to show game list
+    Route::get('game/list', array('uses' => 'GameController@listGames'));
 });
  
 

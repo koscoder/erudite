@@ -77,7 +77,7 @@ Route::filter('guest', function()
 |
 */
 
-Route::filter('hasname', function()
+Route::filter('auth.hasname', function()
 {
 	if (!Session::get('user')) 
         {
