@@ -26,7 +26,7 @@ $freeBase = new freeBase($APIKey);
 // ToDo: replace with real DB query
 $topic = 'books';
 $countries = array(
-    'Germany'
+    'Russia'
 );
 
 $queryData = $mqlList[$topic][0];

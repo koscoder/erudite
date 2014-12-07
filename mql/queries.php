@@ -60,17 +60,15 @@ $mqlList = array(
                                         "genre": [],
                                         "a:/book/written_work/author": [{
                                           "/people/person/date_of_birth": null,
-                                          "a:/people/person/date_of_birth<": "1950-01-01",
+                                          "a:/people/person/date_of_birth<": "1980-01-01",
                                           "a:/people/person/date_of_birth>": "1880-01-01",
                                           "name": null,
                                           "/people/person/nationality": [],
-                                          "a:/people/person/nationality|=": [
-                                            "Germany"
-                                          ]
+                                          "a:/people/person/nationality|=": %countries%
                                         }],
-                                        "/book/written_work/author": null,
+                                        "/book/written_work/author": [],
                                         "name": null,
-                                        "limit": 10
+                                        "limit": %limit%
                                       }]',
             // Paths in JSON tree
             'objectPath' => 'name',

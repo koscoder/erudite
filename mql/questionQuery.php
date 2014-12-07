@@ -55,16 +55,31 @@ class questionQuery {
     {
         $countriesJson = json_encode($countries);
         
-        return str_replace('%countries%', $countriesJson, $this->query);
+        return str_replace(array('%countries%','%limit%'), array($countriesJson, $limit), $this->query);
     }
     
     private function getCorrectSet($data) {
         $setKey = array_rand($data);
-        $set = $data[$setKey];
-        return array(
-            'object' => $set[$this->objectPath],
-            'option' => $set[$this->optionsPath]
+        $setTemp = $data[$setKey];
+        $set = array(
+            'object' => $setTemp[$this->objectPath],
+            'option' => $setTemp[$this->optionsPath]
         );
+        
+        if (is_array($set['option'])) {
+            $set['option'] = $this->anyFromArray($set['option']);
+        }
+        
+        if (is_array($set['object'])) {
+            $set['object'] = $this->anyFromArray($set['object']);
+        }
+        
+        return $set;
+    }
+    
+    private function anyFromArray($array) {
+        $key = array_rand($array);
+        return $array[$key];
     }
     
     private function generateIncorrectOptions($data, $except, $optionsNum=4) {
@@ -73,9 +88,16 @@ class questionQuery {
         shuffle($data);
         foreach ($data as $item) {
             if ($found >= $optionsNum) break;
-            if ( ($item[$this->optionsPath] != $except) && (!isset($options[$item[$this->optionsPath]])) ) {
+            
+            $option = $item[$this->optionsPath];
+
+            if (is_array($option)) {
+                $option = $this->anyFromArray($option);
+            }
+            
+            if ( ($option != $except) && (!isset($options[$option])) ) {
                 $found++;
-                $options[$item[$this->optionsPath]] = $item[$this->optionsPath];
+                $options[$option] = $option;
             }
         }
         
