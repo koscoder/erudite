@@ -45,13 +45,13 @@ class questionQuery {
         return $question;
     }
     
-    private function query($countries, $limit=20)
+    private function query($countries, $limit=30)
     {
         $query = $this->getQuery($countries, $limit);
         return $this->dbConnector->query($query);
     }
     
-    private function getQuery($countries, $limit=20)
+    private function getQuery($countries, $limit=30)
     {
         $countriesJson = json_encode($countries);
         

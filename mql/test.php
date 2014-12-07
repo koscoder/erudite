@@ -24,9 +24,9 @@ $freeBase = new freeBase($APIKey);
 
 // Get corresponding queries for selected topics: books, music, etc.
 // ToDo: replace with real DB query
-$topic = 'music';
+$topic = 'military_conflicts';
 $countries = array(
-    'Russia'
+    'Ukraine'
 );
 
 $queryData = $mqlList[$topic][0];
