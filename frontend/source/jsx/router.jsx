@@ -14,7 +14,7 @@ var route = function (url) {
 };
 
 var init = function (changePage) {
-  route('/', function () {
+  route('/games', function () {
     changePage(<LobbyPage />);
   });
 
@@ -27,11 +27,11 @@ var init = function (changePage) {
   });
 
   route('/index.html', function () {
-    page.redirect('#');
+    page.redirect('/games');
   });
 
-  route('/game', function () {
-    page.redirect('#');
+  route('/', function () {
+    page.redirect('/games');
   });
 
   route('*', function () {
