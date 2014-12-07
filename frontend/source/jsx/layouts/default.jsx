@@ -3,9 +3,7 @@ var page = require('page');
 var template = require('./default.view.jsx');
 
 var DefaultLayout = React.createClass({
-  render: function () {
-    return template.call(this);
-  }
+  render: template
 });
 
 module.exports = DefaultLayout;

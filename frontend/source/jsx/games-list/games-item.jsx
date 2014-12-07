@@ -6,9 +6,7 @@ var GamesItem = React.createClass({
   componentWillMount: function () {
     this.setState({game: this.props.game});
   },
-  render: function () {
-    return template.call(this);
-  },
+  render: template,
   handlerJoin: function () {
     page('/game/' + this.getId());
   },

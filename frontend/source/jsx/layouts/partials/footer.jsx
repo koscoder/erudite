@@ -3,9 +3,7 @@ var page = require('page');
 var template = require('./footer.view.jsx');
 
 var Footer = React.createClass({
-  render: function () {
-    return template.call(this);
-  }
+  render: template
 });
 
 module.exports = Footer;

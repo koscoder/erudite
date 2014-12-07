@@ -1,0 +1,54 @@
+var React = require('react');
+var $ = require('jQuery');
+var template = require('./create.view.jsx');
+
+var Create = React.createClass({
+  render: template,
+  componentDidMount: function () {
+    this._initCheckboxes();
+    this._initDropdowns();
+    this._initRegions();
+  },
+  _initCheckboxes: function () {
+    var topics = this.refs.topics.getDOMNode();
+    $('.checkbox', topics).checkbox();
+  },
+  _initDropdowns: function () {
+    var mainInfo = this.refs.mainInfo.getDOMNode();
+    $('.dropdown', mainInfo).dropdown();
+  },
+  _initRegions: function () {
+    var regions = this.refs.regions.getDOMNode();
+    var script = document.createElement('script');
+
+    script.onload = function () {
+      script.remove();
+
+      var drawRegionsMap = function () {
+        var data = google.visualization.arrayToDataTable([
+            ['Country', 'Clickable'],
+            ['Germany', 1],
+            ['United States', 1],
+            ['Brazil', 1],
+            ['Canada', 1],
+            ['France', 1],
+            ['RU', 1]
+        ]);
+
+        var options = {};
+        var chart = new google.visualization.GeoChart(regions);
+        chart.draw(data, options);
+      };
+
+      // TODO: google.load removes document.body element/.
+      return;
+      google.load('visualization', '1', {packages: ['geochart']});
+      google.setOnLoadCallback(drawRegionsMap);
+    };
+
+    script.src = "https://www.google.com/jsapi";
+    document.body.appendChild(script);
+  }
+});
+
+module.exports = Create;

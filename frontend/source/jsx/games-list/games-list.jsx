@@ -97,11 +97,11 @@ var GamesList = React.createClass({
       ]
     };
   },
-  render: function () {
-    var gamesItems = this.state.games.map(function (game) {
+  render: template,
+  getGames: function () {
+    return this.state.games.map(function (game) {
       return <GamesItem game={game} />;
     });
-    return template.call(this, gamesItems);
   }
 });
 

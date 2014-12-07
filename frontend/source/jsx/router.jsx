@@ -6,6 +6,7 @@ var LoadingPage = require('./loading/loading.jsx');
 var LoginPage = require('./login/login.jsx');
 var LobbyPage = require('./lobby/lobby.jsx');
 var NotExistsPage = require('./404/404.jsx');
+var Create = require('./create/create.jsx');
 
 var route = function (url) {
   var chain = window.Array.prototype.slice.call(arguments, 1);
@@ -21,8 +22,8 @@ var init = function (changePage) {
     changePage(<LoginPage />);
   });
 
-  route('/404', function (ctx) {
-    changePage(<NotExistsPage />);
+  route('/create', function () {
+    changePage(<Create />);
   });
 
   route('/index.html', function () {
@@ -30,7 +31,7 @@ var init = function (changePage) {
   });
 
   route('*', function () {
-    page.redirect('/404');
+    changePage(<NotExistsPage />);
   });
 
   page({

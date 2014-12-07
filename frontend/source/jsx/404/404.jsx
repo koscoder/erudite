@@ -2,9 +2,7 @@ var React = require('react');
 var template = require('./404.view.jsx');
 
 var NotExistsPage = React.createClass({
-  render: function () {
-    return template.call(this);
-  }
+  render: template
 });
 
 module.exports = NotExistsPage;

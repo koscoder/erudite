@@ -1,4 +1,4 @@
-module.exports = function (games) {
+module.exports = function () {
   return (
     <table className="ui sortable celled table">
       <thead>
@@ -12,7 +12,7 @@ module.exports = function (games) {
           <th></th>
         </tr>
       </thead>
-      <tbody>{games}</tbody>
+      <tbody>{this.getGames()}</tbody>
     </table>
   );
 };
