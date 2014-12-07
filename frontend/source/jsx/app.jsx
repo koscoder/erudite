@@ -4,13 +4,13 @@ var router = require('./router.jsx');
 var AppContainer = React.createClass({
   getInitialState: function () {
     var container = this;
-    var Page = router(function (Page) {
-      container.setState({page: Page});
+    var PageElement = router(function (PageElement) {
+      container.setState({page: PageElement});
     });
-    return {page: Page};
+    return {page: PageElement};
   },
   render: function () {
-    return React.createElement(this.state.page);
+    return this.state.page;
   }
 });
 
