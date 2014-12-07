@@ -10,15 +10,23 @@ class HomeController extends BaseController {
         public function doLogin()
 	{
             
-            $cookie = Cookie::make('name', Input::get('name', 'Anonymous'));
+            $name   = Input::get('name');
             
-            return Redirect::to('games')->withCookie($cookie);
+            $validator = Validator::make(
+                array('name' => $name),
+                array('name' => 'required|min:5')
+            );
+            
+            if ($validator->fails())
+            {
+                return Redirect::to('/')->withErrors( $validator );
+            }
+            
+            Session::put('name', $name);            
+            
+            return Redirect::to('games')->withCookie( Cookie::make('name', $name) );
 	}
         
-        public function test()
-        {
-        $test = ['123','333', new stdClass()];
-            return $test;
-        }
+        
 
 }
