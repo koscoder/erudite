@@ -21,6 +21,9 @@ var GamesItem = React.createClass({
   getGame: function () {
     return this.state.game;
   },
+  getGameModel: function () {
+    return Storage.getGame(this.getGame().id);
+  },
   getId: function () {
     return this.getGame().id;
   },
@@ -28,14 +31,34 @@ var GamesItem = React.createClass({
     return this.getGame().title;
   },
   getStatus: function () {
-    return this.getGame().status;
+    var game = this.getGameModel();
+    switch (this.getGame().status) {
+      case game.GAME_WAITING:
+        return 'Waiting';
+      case game.GAME_PROGRESS:
+        return 'Battle';
+      case game.GAME_CLOSED:
+        return 'Dead';
+    }
+
+    return false;
   },
   getPlayers: function () {
     var game = this.getGame();
-    return game.players + '/' + game.playersMax;
+    return game.players.length + '/' + game.playersMax;
   },
   getRoom: function () {
-    return this.getGame().room;
+    var game = this.getGameModel();
+    switch (this.getGame().room) {
+      case game.ROOM_JOSTLER:
+        return 'Jostler (5 minutes)';
+      case game.ROOM_THIEF:
+        return 'Thief (10 minutes)';
+      case game.ROOM_ROBBER:
+        return 'Robber (20 minutes)';
+    }
+
+    return false;
   },
   getTags: function () {
     return <span>[{this.getGame().tags.join(', ')}]</span>;
