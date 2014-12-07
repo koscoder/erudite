@@ -78,8 +78,12 @@ class questionQuery {
     }
     
     private function anyFromArray($array) {
-        $key = array_rand($array);
-        return $array[$key];
+        if (count($array)) {
+            $key = array_rand($array);
+            return $array[$key];
+        } else {
+            return '';
+        }
     }
     
     private function generateIncorrectOptions($data, $except, $optionsNum=4) {

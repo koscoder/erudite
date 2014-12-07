@@ -24,7 +24,7 @@ $freeBase = new freeBase($APIKey);
 
 // Get corresponding queries for selected topics: books, music, etc.
 // ToDo: replace with real DB query
-$topic = 'books';
+$topic = 'music';
 $countries = array(
     'Russia'
 );
