@@ -9,7 +9,10 @@ class HomeController extends BaseController {
         
         public function doLogin()
 	{
-		return Redirect::to('game');
+            
+            $cookie = Cookie::make('name', Input::get('name', 'Anonymous'));
+            
+            return Redirect::to('game')->withCookie($cookie);
 	}
         
         public function test()
