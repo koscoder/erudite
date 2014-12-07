@@ -23,6 +23,10 @@ var init = function (changePage) {
     changePage(<LoginPage />);
   });
 
+  route('/logout', function () {
+    window.location.href = '/logout';
+  });
+
   route('/create', function () {
     changePage(<Create />);
   });
