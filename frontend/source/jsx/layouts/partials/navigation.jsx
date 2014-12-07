@@ -5,7 +5,7 @@ var template = require('./navigation.view.jsx');
 var Navigation = React.createClass({
   render: template,
   handleHomeLink: function () {
-    page('#');
+    page('/games');
   },
   handleCreateLink: function () {
     page('/create');
