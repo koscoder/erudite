@@ -4,7 +4,8 @@
     "./bower_components/page/page.js",
     "./bower_components/jquery/dist/jquery.min.js",
     "./bower_components/semantic-ui/dist/semantic.min.js",
-    "./bower_components/socket.io-client/socket.io.js"
+    "./bower_components/socket.io-client/socket.io.js",
+    "./bower_components/react/react.min.js"
   ],
   "styles": [
     "./bower_components/semantic-ui/dist/semantic.min.css"

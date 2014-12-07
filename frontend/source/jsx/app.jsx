@@ -1,15 +1,22 @@
-var _ = require('lodash');
 var React = require('react');
+var router = require('./router.jsx');
 
-var HelloWorld = React.createClass({
+var AppContainer = React.createClass({
+  getInitialState: function () {
+    var container = this;
+    var Page = router(function (Page) {
+      container.setState({page: Page});
+    });
+    return {page: Page};
+  },
   render: function () {
-    return (
-      <div>Hello, World!</div>
-    );
+    return React.createElement(this.state.page);
   }
 });
 
+
 React.render(
-  <HelloWorld />,
+  <AppContainer />,
   document.getElementById('app')
 );
+

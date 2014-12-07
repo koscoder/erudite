@@ -38,11 +38,12 @@ gulp.task('jsx', function(){
   var globalShimTransform = globalShim.configure({
     'react': 'React',
     'lodash': '_',
-    'page': 'page'
+    'page': 'page',
+    'jQuery': 'jQuery'
   });
   b.transform(reactify);
   b.transform(globalShimTransform);
-  b.add(src + '/jsx/router.jsx');
+  b.add(src + '/jsx/app.jsx');
   return b.bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest(assets));
@@ -106,7 +107,7 @@ gulp.task('watch/vendors', function () {
   gulp.watch(configDir + '/vendors.json', ['vendors']);
 });
 
-gulp.task('watch', ['watch/jsx', 'watch/styl', 'watch/static']);
+gulp.task('watch', ['watch/jsx', 'watch/styl', 'watch/static', 'watch/vendors']);
 gulp.task('vendors', ['vendors/js', 'vendors/css', 'vendors/assets']);
 gulp.task('fast-build', ['static', 'jsx', 'stylus']);
 gulp.task('build', ['vendors', 'fast-build']);

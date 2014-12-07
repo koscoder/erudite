@@ -1,0 +1,78 @@
+module.exports = function () {
+  return (
+    <div className="pusher">
+      <div className="full height">
+        <div className="bar light fixed">
+          <div className="ui page grid">
+            <div className="column">
+              <div className="ui logo shape">
+                <div className="sides">
+                  <div className="ui side active">
+                    <img className="ui image" src="./assets/images/logo.png" />
+                  </div>
+                </div>
+              </div>
+
+              <div className="ui right floated secondary menu">
+                <div className="ui floating link item">
+                  <div onClick={this.handleLoginLink} className="text">Logout</div>
+                </div>
+              </div>
+
+              <div className="ui large secondary network menu">
+                <a onClick={this.handleHomeLink} className="view-ui item transition animating scale in active"><i className="cube icon"></i> Games</a>
+                <a className="view-ui item transition animating scale in" href="create.html"><i className="plus icon"></i> Create Game</a>
+                <a className="view-ui item transition animating scale in"><i className="empty star icon"></i> Ratings</a>
+                <span className="additional item transition animating scale in"><i className="puzzle icon"></i> Topics</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="ui vertical feature segment">
+          <div className="ui centered page grid">
+            <div className="sixteen wide column">
+              {this.props.children}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="ui vertical inverted black footer segment">
+
+        <div className="ui centered page grid">
+          <div className="sixteen wide column">
+            <div className="ui stackable inverted divided relaxed grid">
+              <div className="eight wide column logo">
+                <h3 className="ui inverted header">Developed by CodeTiburon</h3>
+                <p>For the world's first global virtual #hackathon</p>
+                <p><i>No matter how good your existing software is, we can make it better.</i></p>
+                <a href="http://codetiburon.com/" target="_blank"><img className="ui image logo" src="./assets/images/logo-footer.png" /></a>
+              </div>
+              <div className="four wide column">
+                <h5 className="ui teal inverted header">About</h5>
+                <div className="ui inverted link list">
+                  <a className="item" href="https://github.com/CodeTiburon/erudite" target="_blank"><i className="github square icon"></i> GitHub</a>
+                  <a className="item" href="#" target="_blank">About Project</a>
+                  <a className="item" href="#" target="_blank"><i className="linkedin square icon"></i> Stas</a>
+                  <a className="item" href="#" target="_blank"><i className="linkedin square icon"></i> Konstantin</a>
+                  <a className="item" href="#" target="_blank"><i className="linkedin square icon"></i> Vadim</a>
+                </div>
+              </div>
+              <div className="four wide column">
+                <h5 className="ui teal inverted header">APIs</h5>
+                <div className="ui inverted link list">
+                  <a className="item" href="https://developers.google.com/chart/" target="_blank">Google Charts</a>
+                  <a className="item" href="https://developers.google.com/freebase/v1/mql-overview" target="_blank">Google Freebase</a>
+                  <a className="item" href="https://gravatar.com" target="_blank">Gravatar</a>
+                  <a className="item" href="https://dev.twitter.com/web/sign-in" target="_blank">Sign in with Twitter</a>
+                  <a className="item" href="https://developers.facebook.com/docs/facebook-login/v2.2" target="_blank">Facebook Login</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+};

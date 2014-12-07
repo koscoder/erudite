@@ -1,17 +1,43 @@
 var page = require('page');
+var acl = require('./acl.jsx');
 
 // Modules
-//var app = require('app');
+var LoadingPage = require('./loading/loading.jsx');
+var LoginPage = require('./login/login.jsx');
+var LobbyPage = require('./lobby/lobby.jsx');
 
-// Routes
+var route = function (url) {
+  var chain = window.Array.prototype.slice.call(arguments, 1);
+  return page.apply(window, [url, acl].concat(chain));
+};
 
-page('/', function () {
-  console.log('home');
-});
+var init = function (changePage) {
+  route('/', function () {
+    changePage(LobbyPage);
+  });
 
-page('*', function () {
-  console.log(arguments);
-});
+  route('/login', function () {
+    changePage(LoginPage);
+  });
 
-page();
+  route('/404', function (ctx) {
+    console.log('404', arguments);
+  });
 
+  route('/index.html', function () {
+    page.redirect('#');
+  });
+
+  route('*', function () {
+    page.redirect('/404');
+  });
+
+  page({
+    popstate: false,
+    hashbang: true
+  });
+
+  return LoadingPage;
+}
+
+module.exports = init;
