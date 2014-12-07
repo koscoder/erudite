@@ -12,7 +12,7 @@ class HomeController extends BaseController {
             
             $cookie = Cookie::make('name', Input::get('name', 'Anonymous'));
             
-            return Redirect::to('game')->withCookie($cookie);
+            return Redirect::to('games')->withCookie($cookie);
 	}
         
         public function test()
