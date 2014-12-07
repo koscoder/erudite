@@ -55,47 +55,30 @@ $mqlList = array(
         array(
             'question' => 'Who is the author of "%object%"?',
             
-            'query' =>  '[{
-                                        "type": "/book/book",
-                                        "genre": [],
-                                        "a:/book/written_work/author": [{
-                                          "/people/person/date_of_birth": null,
-                                          "a:/people/person/date_of_birth<": "1980-01-01",
-                                          "a:/people/person/date_of_birth>": "1880-01-01",
-                                          "name": null,
-                                          "/people/person/nationality": [],
-                                          "a:/people/person/nationality|=": %countries%
-                                        }],
-                                        "/book/written_work/author": [],
-                                        "name": null,
-                                        "limit": %limit%
-                                      }]',
+            'query' => '[{
+                "type": "/book/book",
+                "genre": [],
+                "a:/book/written_work/author": [{
+                  "/people/person/date_of_birth": null,
+                  "a:/people/person/date_of_birth<": "1990-01-01",
+                  "a:/people/person/date_of_birth>": "1780-01-01",
+                  "name": null,
+                  "/people/person/nationality": [],
+                  "a:/people/person/nationality|=": %countries%
+                }],
+                "a:genre|=": [
+                  "Novel",
+                  "Fiction",
+                  "Science Fiction"
+                ],
+                "/book/written_work/author": [],
+                "name": null,
+                "limit": %limit%
+              }]',
+            
             // Paths in JSON tree
             'objectPath' => 'name',
             'optionsPath' => '/book/written_work/author',
-        ),
-        array(
-            'question' => 'Who is the author of %object%?',
-            
-            'queryRandomObject' =>  '[{
-                                        "type": "/book/book",
-                                        "genre": [],
-                                        "/book/written_work/author": [{
-                                          "/people/person/date_of_birth": null,
-                                          "a:/people/person/date_of_birth<": "1950-01-01",
-                                          "a:/people/person/date_of_birth>": "1880-01-01",
-                                          "name": null,
-                                          "/people/person/nationality": [],
-                                          "a:/people/person/nationality|=": [
-                                            "Germany"
-                                          ]
-                                        }],
-                                        "name": null,
-                                        "limit": 10
-                                      }]',
-            // Paths in JSON tree
-            'objectPath' => 'name',
-            'optionsPath' => '/book/written_work/author.name',
         )
     )
 );
