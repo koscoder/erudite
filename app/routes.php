@@ -22,6 +22,9 @@ Route::get('/', array('uses' => 'HomeController@showLogin'));
 // route to process the form
 Route::post('login', array('uses' => 'HomeController@doLogin'));
 
+// route to process the form
+Route::get('logout', array('uses' => 'HomeController@doLogout'));
+
 
 Route::group(array('before' => 'hasname'), function()
 {
