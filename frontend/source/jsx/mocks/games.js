@@ -2,32 +2,47 @@ module.exports = [
   {
     id: 1,
     title: 'Commonwealth of Independent States films',
-    status: 'Waiting',
+    status: 'waiting',
     playersMax: 5,
-    players: 3,
-    room: 'Standard game (45 minutes)',
+    players: [
+        {id: Math.floor(Math.random() * 10000),
+            username: "Stevie Feliciano"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Jenny Hess"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Veronika Ossi"}
+    ],
+    room: 'thief',
     tags: ['Films'],
     flags: ['ua', 'belarus', 'ru'],
-    started: false
+    started: null
   },
   {
     id: 2,
     title: 'Science fiction russian films',
-    status: 'Waiting',
-    players: 1,
+    status: 'waiting',
+    players: [
+        {id: Math.floor(Math.random() * 10000),
+            username: "Jenny Hess"}
+    ],
     playersMax: 5,
-    room: 'Short game (30 minutes)',
+    room: 'jostler',
     tags: ['Films'],
     flags: ['ru'],
-    started: false
+    started: null
   },
   {
     id: 3,
     title: 'Italian Painters',
-    status: 'Started',
-    players: 2,
+    status: 'progress',
+    players: [
+        {id: Math.floor(Math.random() * 10000),
+            username: "Daniel Louise"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Veronika Ossi"}
+    ],
     playersMax: 4,
-    room: 'Standard game (45 minutes)',
+    room: 'thief',
     tags: ['Arts'],
     flags: ['it'],
     started: Date.now()
@@ -35,10 +50,19 @@ module.exports = [
   {
     id: 4,
     title: 'Books of XX Century',
-    status: 'Started',
-    players: 4,
+    status: 'progress',
+    players: [
+        {id: Math.floor(Math.random() * 10000),
+            username: "Daniel Louise"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Stevie Feliciano"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Jenny Hess"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Veronika Ossi"}
+    ],
     playersMax: 6,
-    room: 'Long game (45 minutes)',
+    room: 'robber',
     tags: ['Books'],
     flags: ['gb', 'us', 'de', 'fr'],
     started: Date.now()
@@ -46,32 +70,45 @@ module.exports = [
   {
     id: 5,
     title: 'Commonwealth of Independent States films',
-    status: 'Waiting',
-    players: 3,
+    status: 'waiting',
+    players: [
+        {id: Math.floor(Math.random() * 10000),
+            username: "Veronika Ossi"}
+    ],
     playersMax: 5,
-    room: 'Standard game (45 minutes)',
+    room: 'thief',
     tags: ['Films'],
     flags: ['ua', 'belarus', 'ru'],
-    started: false
+    started: null
   },
   {
     id: 6,
     title: 'Science fiction russian films',
-    status: 'Waiting',
-    players: 1,
+    status: 'waiting',
+    players: [
+        {id: Math.floor(Math.random() * 10000),
+            username: "Jenny Hess"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Veronika Ossi"}
+    ],
     playersMax: 5,
-    room: 'Short game (30 minutes)',
+    room: 'jostler',
     tags: ['Films'],
     flags: ['ru'],
-    started: false
+    started: null
   },
   {
     id: 7,
     title: 'Italian Painters',
-    status: 'Started',
-    players: 2,
+    status: 'progress',
+    players: [
+        {id: Math.floor(Math.random() * 10000),
+            username: "Daniel Louise"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Jenny Hess"}
+    ],
     playersMax: 4,
-    room: 'Standard game (45 minutes)',
+    room: 'thief',
     tags: ['Arts'],
     flags: ['it'],
     started: Date.now()
@@ -79,10 +116,19 @@ module.exports = [
   {
     id: 8,
     title: 'Books of XX Century',
-    status: 'Started',
-    players: 4,
+    status: 'progress',
+    players: [
+        {id: Math.floor(Math.random() * 10000),
+            username: "Elliot Fu"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Jenny Hess"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Veronika Ossi"},
+        {id: Math.floor(Math.random() * 10000),
+            username: "Stevie Feliciano"}
+    ],
     playersMax: 6,
-    room: 'Long game (45 minutes)',
+    room: 'robber',
     tags: ['Books'],
     flags: ['gb', 'us', 'de', 'fr'],
     started: Date.now()
