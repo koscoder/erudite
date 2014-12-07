@@ -34,7 +34,7 @@
                                         <h1 class="ui header inverted">Erudite is an e-learning quiz platform. Interested? Sign-in to start</h1>
                                         <form class="ui form" id="login-form" method="post" action="/login">
                                             <div class="ui action input massive">
-                                                <input type="text" placeholder="Username">
+                                                <input name="name" type="text" placeholder="Username">
                                                 <div class="ui button green" onclick="$('#login-form').submit();">Sign-in</div>
                                             </div>
                                         </form>

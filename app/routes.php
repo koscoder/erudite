@@ -26,7 +26,7 @@ Route::post('login', array('uses' => 'HomeController@doLogin'));
 Route::get('test', array('uses' => 'HomeController@test'));
 
 // route to show game list
-Route::get('game', array('uses' => 'GameController@index'));
+Route::get('games', array('uses' => 'GameController@index'));
 
 //Route::controller('game', 'GameController');
 
