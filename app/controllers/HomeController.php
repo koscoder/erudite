@@ -29,6 +29,12 @@ class HomeController extends BaseController {
             return Redirect::to('games')->withCookie( Cookie::make('user', $user->id.':'.$user->name) );
 	}
         
+        public function doLogout()
+	{
+            Session::flush();
+            return Redirect::to('games')->withCookie( Cookie::forget('user') );
+        }
+        
         
 
 }

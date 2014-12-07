@@ -65,6 +65,7 @@ Route::filter('auth.basic', function()
 Route::filter('guest', function()
 {
 	if (Auth::check()) return Redirect::to('/');
+        
 });
 
 /*
@@ -78,7 +79,15 @@ Route::filter('guest', function()
 
 Route::filter('hasname', function()
 {
-	if (!Session::get('user')) return Redirect::to('/');
+	if (!Session::get('user')) 
+        {
+            if (Request::ajax())
+            {
+                    return Response::make('Unauthorized', 401);
+            }
+            return Redirect::to('/');
+        }            
+            
 });
 
 

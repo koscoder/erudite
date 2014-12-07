@@ -26,7 +26,8 @@ $app = new Illuminate\Foundation\Application;
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('homestead','kos-VirtualBox','ct-hero')
+	'local' => array('homestead','kos-VirtualBox'),
+        'owner' => array('ct-hero')
 
 ));
 
