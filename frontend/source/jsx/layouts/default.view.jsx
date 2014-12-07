@@ -52,11 +52,11 @@ module.exports = function () {
               <div className="four wide column">
                 <h5 className="ui teal inverted header">About</h5>
                 <div className="ui inverted link list">
-                  <a className="item" href="https://github.com/CodeTiburon/erudite" target="_blank"><i className="github square icon"></i> GitHub</a>
+                  <a className="item" href="https://github.com/CodeTiburon/erudite" target="_blank"><i className="github square icon"></i>GitHub</a>
                   <a className="item" href="#" target="_blank">About Project</a>
-                  <a className="item" href="#" target="_blank"><i className="linkedin square icon"></i> Stas</a>
-                  <a className="item" href="#" target="_blank"><i className="linkedin square icon"></i> Konstantin</a>
-                  <a className="item" href="#" target="_blank"><i className="linkedin square icon"></i> Vadim</a>
+                  <a className="item" href="#" target="_blank"><i className="linkedin square icon"></i>Stas</a>
+                  <a className="item" href="#" target="_blank"><i className="linkedin square icon"></i>Konstantin</a>
+                  <a className="item" href="#" target="_blank"><i className="linkedin square icon"></i>Vadim</a>
                 </div>
               </div>
               <div className="four wide column">
