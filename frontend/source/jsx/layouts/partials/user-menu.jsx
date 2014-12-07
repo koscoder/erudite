@@ -5,7 +5,7 @@ var template = require('./user-menu.view.jsx');
 var UserMenu = React.createClass({
   render: template,
   handleLoginLink: function () {
-    page('/login');
+    page('/logout');
   }
 });
 
