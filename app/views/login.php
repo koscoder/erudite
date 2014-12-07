@@ -32,6 +32,7 @@
                                 <div class="ui center aligned page grid">
                                     <div class="column">
                                         <h1 class="ui header inverted">Erudite is an e-learning quiz platform. Interested? Sign-in to start</h1>
+                                        <?php echo $errors->first('name');?>
                                         <form class="ui form" id="login-form" method="post" action="/login">
                                             <div class="ui action input massive">
                                                 <input name="name" type="text" placeholder="Username">

@@ -22,12 +22,17 @@ Route::get('/', array('uses' => 'HomeController@showLogin'));
 // route to process the form
 Route::post('login', array('uses' => 'HomeController@doLogin'));
 
-// 
-Route::get('test', array('uses' => 'HomeController@test'));
 
-// route to show game list
-Route::get('games', array('uses' => 'GameController@index'));
+Route::group(array('before' => 'hasname'), function()
+{
+    // route to show game list
+    Route::get('games', array('uses' => 'GameController@index'));
 
-//Route::controller('game', 'GameController');
+    
+});
+ 
+
+
+
 
 

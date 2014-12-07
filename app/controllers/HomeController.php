@@ -22,9 +22,11 @@ class HomeController extends BaseController {
                 return Redirect::to('/')->withErrors( $validator );
             }
             
-            Session::put('name', $name);            
+            // Create a new user in the database...
+            $user = User::firstOrCreate(array('name' => $name));
+            Session::put('user', $user->id);            
             
-            return Redirect::to('games')->withCookie( Cookie::make('name', $name) );
+            return Redirect::to('games')->withCookie( Cookie::make('user', $user->id.':'.$user->name) );
 	}
         
         
