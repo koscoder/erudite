@@ -20,21 +20,10 @@ class GameController extends BaseController {
                     'room', 
                     'topics as tags', 
                     'countries as flags', 
-                    'started_at as started')->with('players')->get();
+                    'started_at as started')->with('players.user')->get();
             
-            return $games;
-            
-            /**
-             *  id: 1,
-                title: 'Commonwealth of Independent States films',
-                status: 'Waiting',
-                playersMax: 5,
-                players: 3,
-                room: 'Standard game (45 minutes)',
-                tags: ['Films'],
-                flags: ['ua', 'belarus', 'ru'],
-                started: false
-             */
+            return  Response::json($games);
+          
 	}       
         
 }
