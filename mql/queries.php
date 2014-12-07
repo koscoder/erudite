@@ -6,32 +6,32 @@ $mqlList = array(
             'question' => 'Who has recorded "%object%" album?',
 
             'query' =>  '[{
-                                        "name": null,
-                                        "type": "/music/artist",
-                                        "origin": [{
-                                          "type": "/location/country",
-                                          "name|=": %countries%,
-                                          "a:name": []
-                                        }],
-                                        "genre": [],
-                                        "a:genre|=": [
-                                          "Pop music",
-                                          "Folk music",
-                                          "Pop music",
-                                          "Alternative rock",
-                                          "Soft rock",
-                                          "Hard rock",
-                                          "Dance music",
-                                          "Heavy metal",
-                                          "Power metal",
-                                          "New wave",
-                                          "Grunge",
-                                          "Jazz"
-                                        ],
-                                        "album": [],
-                                        "album!=": "Greatest Hits",
-                                        "limit": %limit%
-                                      }]',
+                            "name": null,
+                            "type": "/music/artist",
+                            "origin": [{
+                              "type": "/location/country",
+                              "name|=": %countries%,
+                              "a:name": []
+                            }],
+                            "genre": [],
+                            "a:genre|=": [
+                              "Pop music",
+                              "Folk music",
+                              "Pop music",
+                              "Alternative rock",
+                              "Soft rock",
+                              "Hard rock",
+                              "Dance music",
+                              "Heavy metal",
+                              "Power metal",
+                              "New wave",
+                              "Grunge",
+                              "Jazz"
+                            ],
+                            "album": [],
+                            "album!=": "Greatest Hits",
+                            "limit": %limit%
+                          }]',
             // Paths in JSON tree
             'objectPath' => 'album',
             'optionsPath' => 'name',
@@ -66,6 +66,102 @@ $mqlList = array(
             'objectPath' => 'name',
             'optionsPath' => '/book/written_work/author',
         )
+    ),
+    'films' => array(
+        array(
+            'question' => '"%object%" is directed by ..',
+            
+            'query' => '[{
+                            "name": null,
+                            "type": "/film/film",
+                            "/film/film/directed_by": [],
+                            "a:/film/film/directed_by": [{
+                              "/people/person/nationality|=": %countries%
+                            }],
+                            "genre": [],
+                            "a:genre|=": [
+                              "Comedy",
+                              "Black comedy",
+                              "Family",
+                              "Action Film",
+                              "Action/Adventure",
+                              "Domestic Comedy",
+                              "Cult film",
+                              "Thriller",
+                              "Fantasy",
+                              "Adventure Film",
+                              "Adventure Comedy",
+                              "Psychological thriller",
+                              "Drama",
+                              "Romance Film",
+                              "Romantic comedy",
+                              "Melodrama"
+                            ],
+                            "limit": %limit%
+                          }]',
+            
+            // Paths in JSON tree
+            'objectPath' => 'name',
+            'optionsPath' => '/film/film/directed_by',
+        )
+    ),
+    'paintings' => array(
+        array(
+            'question' => 'Who is a painter of "%object%"?',
+            
+            'query' => '[{
+                            "name": null,
+                            "type": "/visual_art/artwork",
+                            "/visual_art/artwork/artist": [],
+                            "a:/visual_art/artwork/artist": [{
+                              "/people/person/nationality|=": %countries%,
+                              "/visual_art/visual_artist/art_forms|=": [
+                                "Painting"
+                              ]
+                            }],
+                            "art_genre": [],
+                            "limit": %limit%
+                          }]',
+            
+            // Paths in JSON tree
+            'objectPath' => 'name',
+            'optionsPath' => '/visual_art/artwork/artist',
+        )
+    ),
+    
+    'military_conflicts' => array(
+        array(
+            'question' => 'When did the "%object%" (military conflict) start?',
+            
+            'query' => '[{
+                            "name": null,
+                            "type": "/military/military_conflict",
+                            "/military/military_conflict/locations|=": %countries%,
+                            "/time/event/start_date": null,
+                            "/time/event/end_date": null,
+                            "limit": %limit%
+                          }]',
+            
+            'objectPath' => 'name',
+            'optionsPath' => '/time/event/start_date'
+        ),
+        
+        array(
+            'question' => 'When did the "%object%" (military conflict) end?',
+            
+            'query' => '[{
+                            "name": null,
+                            "type": "/military/military_conflict",
+                            "/military/military_conflict/locations|=": %countries%,
+                            "/time/event/start_date": null,
+                            "/time/event/end_date": null,
+                            "limit": %limit%
+                          }]',
+            
+            'objectPath' => 'name',
+            'optionsPath' => '/time/event/end_date'
+        ),
+
     )
 );
 
