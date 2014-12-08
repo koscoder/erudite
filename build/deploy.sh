@@ -15,6 +15,7 @@ npm install
 
 # Setup backend
 cd $DIR
-php artisan migrate
-composer update
+#php artisan migrate
+php artisan migrate:refresh --seed
+composer update -dev
 
