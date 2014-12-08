@@ -42,6 +42,7 @@ Route::group(array('prefix' => 'api', 'before' => 'auth.hasname'), function()
     Route::get('game/game-options', array('uses' => 'GameController@listGameOptions'));
     
     Route::get('game/start/{id}', array('uses' => 'GameController@start'));
+    Route::get('game/view/{id}', array('uses' => 'GameController@view'));
 });
  
 

@@ -51,6 +51,12 @@ class GameController extends BaseController {
           
 	}
         
+        public function view($id)
+        {
+            $game = Game::findOrFail($id);
+            return  Response::json($game);
+        }
+        
         /**
          * Starts Game and returns game cards
          */
