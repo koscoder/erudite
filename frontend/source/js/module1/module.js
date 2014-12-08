@@ -23,7 +23,10 @@ module.exports = function () {
             return false;
         });
         
-        $('#create-game-form .submit').click(function() {$('#create-game-form').submit(); return false;});
+        $('#create-game-form .submit').click(function() {
+          $('#create-game-form').submit();
+          return false;
+        });
         
         loadGames();
         loadConfig();

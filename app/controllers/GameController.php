@@ -102,23 +102,20 @@ class GameController extends BaseController {
             $data = Input::get();
 
             $title           = isset($data['title']) ? $data['title'] : '';
-            $room            = isset($data['room']) ? $data['room'] : '';
-            $status          = isset($data['status']) ? $data['status'] : '';
-            $max_players_num = isset($data['max_players_num']) ? $data['max_players_num'] : '';
+            $room            = isset($data['type']) ? $data['type'] : '';
+            $max_players_num = isset($data['maxPlayers']) ? $data['maxPlayers'] : '';
             $countries       = isset($data['countries']) ? $data['countries'] : '';
 
             $validator = Validator::make(
                 [
                   'title'           => $title,
                   'room'            => $room,
-                  'status'          => $status,
                   'max_players_num' => $max_players_num,
                   'countries'       => $countries,
                 ],
                 [
                   'title'           => 'required|min:3',
                   'room'            => 'required|in:jostler,thief,robber',
-                  'status'          => 'required|in:waiting,progress,closed',
                   'max_players_num' => 'required|between:1,8',
                   'countries'       => 'required',
                 ]
@@ -132,12 +129,12 @@ class GameController extends BaseController {
             }
 
             $game = new Game;
-            $game->title = $data['title'];
-            $game->room = $data['room'];
-            $game->status = $data['status'];
-            $game->max_players_num = $data['max_players_num'];
-            $game->countries = $data['countries'];
+            $game->title = $title;
+            $game->room = $room;
+            $game->max_players_num = $max_players_num;
+            $game->countries = $countries;
 
+            $game->status = 'waiting';
             $game->creator_id = Session::get('user');
             $game->started_at = 0;
 
