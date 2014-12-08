@@ -9,11 +9,12 @@ $(document).ready(function() {
     {
         var url = '/api/game/game-options';
         $.get(url, {}, function(list) {
+            alert('here');
             $('#games-table tbody').empty();
             $(list).each(function(index, item) {
-                var row = '<tr><td>'+item.title+'44</td>'
+                var row = '<tr><td>'+item.title+'</td>'
                             +'<td>'+item.status+'</td>'
-                            +'<td>'+item.players.length+'/'+item.playersMax+'</td>'
+                            +'<td>0/'+item.playersMax+'</td>'
                             +'<td>'+item.room+'</td>'
                             +'<td>[Films]</td>'
                             +'<td><i class="ua flag"></i> <i class="belarus flag"></i> <i class="ru flag"></i></td>'
