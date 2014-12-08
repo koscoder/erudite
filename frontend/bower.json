@@ -6,12 +6,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "lodash": "~2.4.1",
     "semantic-ui": "~1.1.2",
-    "page": "visionmedia/page.js#~1.5.0",
     "socket.io-client": "~1.2.1",
-    "react": "~0.12.1",
-    "backbone": "~1.1.2",
-    "q": "~2.0.2"
+    "amcharts": "~3.11.2",
+    "ammap": "~3.10.0"
   }
 }
