@@ -51,6 +51,12 @@ class GameController extends BaseController {
           
 	}
         
+        public function view($id)
+        {
+            $game = Game::findOrFail($id);
+            return  Response::json($game);
+        }
+        
         /**
          * Starts Game and returns game cards
          */
@@ -60,27 +66,45 @@ class GameController extends BaseController {
                         
             $this->freebase->setApiKey( Config::get('freebase.apiKey') );
             
-            //$topics = $game->topics->lists('title');
+           
+            $questionNum = 0;
+            switch ($game->room) {
+                case 'robber':
+                    $questionNum = '60';
+                    break;
+                case 'thief':
+                    $questionNum = '30';
+                    break;
+                default:
+                    $questionNum = '15';
+                    break;
+            }
             
             $countries = json_decode($game->countries);
             
             $questionList = [];
+            $questionCount = 0;
             
-            foreach ($game->topics as $topic) 
+            while($questionCount < $questionNum)
             {
-                //dd($topic->queries->toArray());
-                
-                foreach ($topic->queries->toArray() as $row) 
+            
+                foreach ($game->topics as $topic) 
                 {
-                    $query = new Erudite\Question\Query($this->freebase, 
-                        ['question'    => $row['template'],
-                         'query'       => $row['query'],
-                         'objectPath'  => $row['object_path'],
-                         'optionsPath' => $row['options_path']]
-                    );
-                    
-                    $questionList[] = $query->generateQuestion($countries);
+
+                    foreach ($topic->queries->toArray() as $row) 
+                    {
+                        $query = new Erudite\Question\Query($this->freebase, 
+                            ['question'    => $row['template'],
+                             'query'       => $row['query'],
+                             'objectPath'  => $row['object_path'],
+                             'optionsPath' => $row['options_path']]
+                        );
+
+                        $questionList[] = $query->generateQuestion($countries);
+                    }
                 }
+                
+                $questionCount++;
             }
             
             /**

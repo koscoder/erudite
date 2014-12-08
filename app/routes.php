@@ -41,10 +41,14 @@ Route::group(array('prefix' => 'api', 'before' => 'auth.hasname'), function()
     Route::get('game/game-options', array('uses' => 'GameController@listGameOptions'));
     
     Route::get('game/start/{id}', array('uses' => 'GameController@start'));
+<<<<<<< HEAD
 
     // route to save the game
     Route::post('game/create', array('uses' => 'GameController@create'));
     
+=======
+    Route::get('game/view/{id}', array('uses' => 'GameController@view'));
+>>>>>>> f4049134bb0cd1bb07b295a521a3c8ebefc7d8c8
 });
  
 
