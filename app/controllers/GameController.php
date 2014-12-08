@@ -53,7 +53,8 @@ class GameController extends BaseController {
         
         public function view($id)
         {
-            $game = Game::findOrFail($id);
+            Game::findOrFail($id);
+            $game = Game::find(1)->where('id', '=', $id)->with('players.user')->get();
             return  Response::json($game);
         }
         
