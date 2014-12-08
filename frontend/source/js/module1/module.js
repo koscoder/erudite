@@ -22,7 +22,7 @@ module.exports = function () {
             });
         });
         
-        $('#create-game-form .submit').click($('#create-game-form').submit());
+        $('#create-game-form .submit').click(function() {$('#create-game-form').submit()});
         
         loadGames();
         loadConfig();
