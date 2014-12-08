@@ -12,6 +12,7 @@
         <script src="./assets/js/ammap/ammap.js" type="text/javascript"></script>
         <!-- map file should be included after ammap.js -->
         <script src="./assets/js/ammap/maps/js/worldLow.js" type="text/javascript"></script>
+        <script src="./assets/vendors.js"></script>
 
     </head>
     <body>
@@ -23,7 +24,7 @@
                             <div class="ui logo shape">
                                 <div class="sides">
                                     <div class="ui side active">
-                                        <img class="ui image" src="/html/images/logo.png">
+                                        <img class="ui image" src="/assets/images/logo.png">
                                     </div>
                                 </div>
                             </div>
@@ -67,88 +68,56 @@
 
                                 <h1>Create New Game</h1>
                                 <div class="ui form">
-                                    <h4 class="ui dividing header">Game Information</h4>
-                                    <div class="two fields">
-                                        <div class="field">
-                                            <label>Title</label>
-                                            <input type="text" name="title" placeholder="Game title" />
-                                        </div>
-                                        <div class="field">
-                                            <div class="two fields">
-                                                <div class="field">
-                                                    <label>Game Type</label>
-                                                    <select class="ui dropdown" name="type">
-                                                        <option value="">[ Select Game Type ]</option>
-                                                        <option value="1">Short game</option>
-                                                        <option value="2">Standard game</option>
-                                                        <option value="3">Long game</option>
-                                                    </select>
-                                                </div>
-                                                <div class="field">
-                                                    <label>Max number of players</label>
-                                                    <input type="text" name="players" placeholder="Max # of players" value="5" />
+                                    <form id="create-game-form" method="post">
+                                        <h4 class="ui dividing header">Game Information</h4>
+                                        <div class="two fields">
+                                            <div class="field">
+                                                <label>Title</label>
+                                                <input type="text" name="title" placeholder="Game title" />
+                                            </div>
+                                            <div class="field">
+                                                <div class="two fields">
+                                                    <div class="field">
+                                                        <label>Game Type</label>
+                                                        <select class="ui dropdown" name="type">
+                                                            <option value="">[ Select Game Type ]</option>
+                                                            <option value="jostler">Jostler (5 minutes, 15 cards)</option>
+                                                            <option value="thief">Thief (10 minutes, 30 cards)</option>
+                                                            <option value="robber">Robber (15 minutes, 45 cards)</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="field">
+                                                        <label>Max number of players</label>
+                                                        <input type="text" name="maxPlayers" placeholder="Max # of players" value="5" />
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <h4 class="ui dividing header">Topics and Countries</h4>
-                                    <div class="field">
-                                        <div class="sixteen wide column">
-                                            <div class="ui stackable inverted divided relaxed grid">
-                                                <div class="four wide column">
-                                                    <div class="field">
-                                                        <label>Topics</label>
+                                        <h4 class="ui dividing header">Topics and Countries</h4>
+                                        <div class="field">
+                                            <div class="sixteen wide column">
+                                                <div class="ui stackable inverted divided relaxed grid">
+                                                    <div class="four wide column">
                                                         <div class="field">
-                                                            <div class="ui toggle checkbox">
-                                                                <input type="checkbox" />
-                                                                <label>Films</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="field">
-                                                            <div class="ui toggle checkbox">
-                                                                <input type="checkbox" />
-                                                                <label>History</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="field">
-                                                            <div class="ui toggle checkbox">
-                                                                <input type="checkbox" />
-                                                                <label>Politics</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="field">
-                                                            <div class="ui toggle checkbox">
-                                                                <input type="checkbox" />
-                                                                <label>Music</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="field">
-                                                            <div class="ui toggle checkbox">
-                                                                <input type="checkbox" />
-                                                                <label>Arts</label>
-                                                            </div>
-                                                        </div>
-                                                        <div class="field">
-                                                            <div class="ui toggle checkbox">
-                                                                <input type="checkbox" />
-                                                                <label>Books</label>
+                                                            <label>Topics</label>
+                                                            <div class="topics-list">
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="twelve wide column">
+                                                        <div class="field">
+                                                            <label>Countries</label>
+                                                            <div id="chartdiv" style="width: 100%; height: 500px;"></div>
+                                                        </div>
+                                                    </div>    
                                                 </div>
-                                                <div class="twelve wide column">
-                                                    <div class="field">
-                                                        <label>Countries</label>
-                                                        <div id="regions_div" style="width: 100%; height: 500px;"></div>
-                                                    </div>
-                                                </div>    
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="ui error message">
-                                        <div class="header">We noticed some issues</div>
-                                    </div>
-                                    <div class="ui submit button" onclick="$(this).parent().addClass('loading');">Create</div>
+                                        <div class="ui error message">
+                                            <div class="header">We noticed some issues</div>
+                                        </div>
+                                        <div class="ui submit button" onclick="$(this).parent().addClass('loading');">Create</div>
+                                    </form>
                                 </div>
                             </div>
                             <div id="view-game-page"></div>
@@ -166,7 +135,7 @@
                                 <h3 class="ui inverted header">Developed by CodeTiburon</h3>
                                 <p>For the world's first global virtual #hackathon</p>
                                 <p><i>No matter how good your existing software is, we can make it better.</i></p>
-                                <a href="http://codetiburon.com/" target="_blank"><img class="ui image logo" src="images/logo-footer.png" /></a>
+                                <a href="http://codetiburon.com/" target="_blank"><img class="ui image logo" src="/assets/images/logo-footer.png" /></a>
                             </div>
                             <div class="four wide column">
                                 <h5 class="ui teal inverted header">About</h5>
@@ -193,7 +162,6 @@
                 </div>
             </div>
         </div>
-        <script src="./assets/vendors.js"></script>
         <script src="./assets/app.js" type="text/javascript"></script>
     </body>
 </html>
