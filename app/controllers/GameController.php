@@ -127,8 +127,8 @@ class GameController extends BaseController {
             $data = Input::get();
 
             $title           = isset($data['title']) ? $data['title'] : '';
-            $room            = isset($data['type']) ? $data['type'] : '';
-            $max_players_num = isset($data['maxPlayers']) ? $data['maxPlayers'] : '';
+            $room            = isset($data['room']) ? $data['room'] : '';
+            $max_players_num = isset($data['max_players_num']) ? $data['max_players_num'] : '';
             $countries       = isset($data['countries']) ? $data['countries'] : '';
 
             $validator = Validator::make(

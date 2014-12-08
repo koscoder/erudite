@@ -15,10 +15,33 @@ module.exports = function () {
         });
         
         $('#create-game-form').submit(function(){
-            $(this).parent().addClass('loading');
-            $.post('/api/game/create', $(this).serialize(), function(data) {
-                // ToDo: process on create
-                $(this).parent().removeClass('loading');
+            $el = $(this);
+            $el.parent().addClass('loading');
+            $.post('/api/game/create', $el.serialize(), function(data) {
+                if (typeof data === 'object' && data.status) {
+                  window.location.href = '/games';
+                  return;
+                }
+                $el.parent().removeClass('loading');
+                if (typeof data === 'object' && data.validator) {
+                  var gErrors = [];
+                  $('.ui.error.message', $el).hide();
+                  $('.error.field', $el).removeClass('error');
+                  $.each(data.validator, function (name, errors) {
+                    $('[name='+name+']', $el).parents('.field').first().addClass('error');
+                    gErrors = gErrors.concat(errors);
+                  });
+                  var htmlErrs = '<ul class="list">';
+                  $.each(gErrors, function (i, err) {
+                    htmlErrs +='<li>'+err+'</li>';
+                  });
+                  htmlErrs +='</ul>';
+
+                  console.log(htmlErrs);
+                  $('.error.message', $el)
+                    .html(htmlErrs)
+                    .fadeIn();
+                }
             });
             return false;
         });
