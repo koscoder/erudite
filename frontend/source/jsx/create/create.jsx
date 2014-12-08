@@ -1,14 +1,30 @@
 var React = require('react');
 var page = require('page');
 var $ = require('jQuery');
+var Storage = require('storage');
 var template = require('./create.view.jsx');
 
 var Create = React.createClass({
+  getInitialState: function () {
+    var self = this;
+    Storage.on('load:game-config', function (data) {
+      self.setState(data);
+    });
+    return {
+      topics: [],
+      gameTypes: []
+    }
+  },
   render: template,
   handleCreate: function () {
     page('/game');
   },
   componentDidMount: function () {
+    this._initCheckboxes();
+    this._initDropdowns();
+    this._initRegions();
+  },
+  componentDidUpdate: function () {
     this._initCheckboxes();
     this._initDropdowns();
     this._initRegions();

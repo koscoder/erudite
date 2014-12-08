@@ -1,4 +1,5 @@
 var page = require('page');
+var Storage = require('storage');
 var acl = require('./acl.jsx');
 
 // Modules
@@ -7,6 +8,7 @@ var LoginPage = require('./login/login.jsx');
 var LobbyPage = require('./lobby/lobby.jsx');
 var NotExistsPage = require('./404/404.jsx');
 var Create = require('./create/create.jsx');
+var LoadCreateData = require('./create/load-data.js');
 var Game = require('./game/game.jsx');
 
 var route = function (url) {
@@ -27,7 +29,7 @@ var init = function (changePage) {
     window.location.href = '/logout';
   });
 
-  route('/create', function () {
+  route('/create', LoadCreateData, function () {
     changePage(<Create />);
   });
 

@@ -19,7 +19,7 @@ class PlayerTableSeeder extends Seeder {
                                'game_id'   => $faker->numberBetween(1,10),
                                'score'     => $faker->randomElement(['0', '100', '300']),
                             ]);
-                        } catch (QueryException $e) {
+                        } catch (Exception $e) {
                             // do nothing
                         }
 		}

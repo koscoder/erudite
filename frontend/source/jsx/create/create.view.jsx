@@ -6,6 +6,18 @@ var regionsStyle = {
 };
 
 module.exports = function () {
+  var gameTopics = this.state.topics.map(function (topic) {
+    var topicName = 'topics[' + topic.id + ']';
+    return (
+        <div className="field">
+          <div className="ui toggle checkbox">
+            <input type="checkbox" value={topic.id} name={topicName} />
+            <label>{topic.title}</label>
+          </div>
+        </div>
+    );
+  });
+
   return (
     <DefaultLayout>
       <h1>Create New Game</h1>
@@ -41,42 +53,7 @@ module.exports = function () {
               <div className="four wide column">
                 <div className="field" ref="topics">
                   <label>Topics</label>
-                  <div className="field">
-                    <div className="ui toggle checkbox">
-                      <input type="checkbox" />
-                      <label>Films</label>
-                    </div>
-                  </div>
-                  <div className="field">
-                    <div className="ui toggle checkbox">
-                      <input type="checkbox" />
-                      <label>History</label>
-                    </div>
-                  </div>
-                  <div className="field">
-                    <div className="ui toggle checkbox">
-                      <input type="checkbox" />
-                      <label>Politics</label>
-                    </div>
-                  </div>
-                  <div className="field">
-                    <div className="ui toggle checkbox">
-                      <input type="checkbox" />
-                      <label>Music</label>
-                    </div>
-                  </div>
-                  <div className="field">
-                    <div className="ui toggle checkbox">
-                      <input type="checkbox" />
-                      <label>Arts</label>
-                    </div>
-                  </div>
-                  <div className="field">
-                    <div className="ui toggle checkbox">
-                      <input type="checkbox" />
-                      <label>Books</label>
-                    </div>
-                  </div>
+                  {gameTopics}
                 </div>
               </div>
               <div className="twelve wide column">
