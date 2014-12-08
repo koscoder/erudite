@@ -120,17 +120,17 @@
                             </div>
                             <div id="view-game-page">
 
-                            <h1>Game "%TITLE%"</h1>
+                            <h1>Game "<span id="game-title">%TITLE%</span>"</h1>
                             <div class="sixteen wide column">
                                 <div class="ui stackable inverted divided relaxed grid">
                                     <div class="four wide column">
                                         <h4>Time Left</h4>
-                                        <h1><i class="icon wait"></i> 12:56</h1>
+                                        <h1><i class="icon wait"></i> <span>12:56</span></h1>
                                         <h4>Game Information</h4>
-                                        <p>Type: Short game</p>
-                                        <p>Countries: <i class="ua flag"></i> <i class="belarus flag"></i> <i class="ru flag"></i></p>
-                                        <p>Topic: Films</p>
-                                        <h4>Players List 5/6</h4>
+                                        <p>Type: <span id="game-type">Short game</span></p>
+                                        <p>Countries: <span id="game-countries"><i class="ua flag"></i> <i class="belarus flag"></i> <i class="ru flag"></i></span></p>
+                                        <p>Topic: <span id="game-topics">Films</span></p>
+                                        <h4>Players List <span id="game-players-num">5</span>/<span id="game-max-players-num">6</span></h4>
                                         <div class="ui divided list" id="game-board-players">
                                             <div class="item">
                                                 <img class="ui avatar image" src="http://semantic-ui.com/images/avatar/small/daniel.jpg">
@@ -313,8 +313,8 @@
                             <div class="four wide column">
                                 <h5 class="ui teal inverted header">APIs</h5>
                                 <div class="ui inverted link list">
-                                    <a class="item" href="https://developers.google.com/chart/" target="_blank">Google Charts</a>
                                     <a class="item" href="https://developers.google.com/freebase/v1/mql-overview" target="_blank">Google Freebase</a>
+                                    <a class="item" href="https://developers.google.com/chart/" target="_blank">Google Charts</a>
                                     <a class="item" href="https://gravatar.com" target="_blank">Gravatar</a>
                                     <a class="item" href="https://dev.twitter.com/web/sign-in" target="_blank">Sign in with Twitter</a>
                                     <a class="item" href="https://developers.facebook.com/docs/facebook-login/v2.2" target="_blank">Facebook Login</a>

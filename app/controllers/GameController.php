@@ -54,8 +54,8 @@ class GameController extends BaseController {
         public function view($id)
         {
             Game::findOrFail($id);
-            $game = Game::find(1)->where('id', '=', $id)->with('players.user')->get();
-            return  Response::json($game);
+            $game = Game::find(1)->where('id', '=', $id)->with('players.user', 'topics')->get();
+            return  Response::json($game[0]);
         }
         
         /**
@@ -64,57 +64,80 @@ class GameController extends BaseController {
         public function start($id)
         {
             $game = Game::findOrFail($id);
+            
+            $cardList = [];
+            
+            if (in_array($game->status, ['progress', 'closed'])) {
+                
+                $cardList = $game->cards()->get()->toArray(); //->lists('question', 'options', 'status', 'player_id');
+               
+            } else {
                         
-            $this->freebase->setApiKey( Config::get('freebase.apiKey') );
-            
-           
-            $questionNum = 0;
-            switch ($game->room) {
-                case 'robber':
-                    $questionNum = '60';
-                    break;
-                case 'thief':
-                    $questionNum = '30';
-                    break;
-                default:
-                    $questionNum = '15';
-                    break;
-            }
-            
-            $countries = json_decode($game->countries);
-            
-            $questionList = [];
-            $questionCount = 0;
-            
-            while($questionCount < $questionNum)
-            {
-            
-                foreach ($game->topics as $topic) 
+                $this->freebase->setApiKey( Config::get('freebase.apiKey') );
+
+
+                $questionNum = 0;
+                switch ($game->room) {
+                    case 'robber':
+                        $questionNum = '60';
+                        break;
+                    case 'thief':
+                        $questionNum = '30';
+                        break;
+                    default:
+                        $questionNum = '15';
+                        break;
+                }
+
+                $countries = json_decode($game->countries);
+
+                $questionCount = 0;
+
+                while($questionCount < $questionNum)
                 {
 
-                    foreach ($topic->queries->toArray() as $row) 
+                    foreach ($game->topics as $topic) 
                     {
-                        $query = new Erudite\Question\Query($this->freebase, 
-                            ['question'    => $row['template'],
-                             'query'       => $row['query'],
-                             'objectPath'  => $row['object_path'],
-                             'optionsPath' => $row['options_path']]
-                        );
 
-                        $questionList[] = $query->generateQuestion($countries);
+                        foreach ($topic->queries->toArray() as $row) 
+                        {
+                            $query = new Erudite\Question\Query($this->freebase, 
+                                ['question'    => $row['template'],
+                                 'query'       => $row['query'],
+                                 'objectPath'  => $row['object_path'],
+                                 'optionsPath' => $row['options_path']]
+                            );
+
+                            $question = $query->generateQuestion($countries);
+
+                            /**
+                             * Save card
+                             */
+                            $card = [
+                                        'question' => $question->question,
+                                        'game_id'  => $id,
+                                        'status'   => 'new',
+                                        'player_id' => 0,
+                                        'options'  => $question->options,
+                                    ];
+
+                            $cardList[] = $card;
+
+                            Card::create( $card );        
+                        }
                     }
+
+                    $questionCount++;
                 }
-                
-                $questionCount++;
+
+                /**
+                 * Change game status to progress
+                 */
+                $game->status = 'progress';
+                $game->save();            
             }
             
-            /**
-             * Change game status to progress
-             */
-            $game->status = 'progress';
-            $game->save();
-            
-            return Response::json($questionList);
+            return Response::json($cardList);
             
             
         }

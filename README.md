@@ -23,7 +23,7 @@ Project utilizes a couple of different API’s and libraries/framework, there ar
 
 ### List of Games
 
-![List of Games](http://koscoder.koding.io/github/game-list.png)
+![List of Games](http://koscoder.koding.io/github/games-list.png)
 
 ### Waiting for Users
 
