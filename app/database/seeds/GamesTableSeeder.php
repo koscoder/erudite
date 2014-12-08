@@ -21,10 +21,9 @@ class GamesTableSeeder extends Seeder {
                             'max_players_num' => $faker->numberBetween(1,3),
                             'countries'      => json_encode([$faker->randomElement(
                                                 [$faker->countryCode,$faker->countryCode,$faker->countryCode]), $faker->countryCode]),
-                            'topics'         => json_encode([$faker->randomElement(['Rock music','Films','Books']),'Books']),
                             'creator_id'     => $faker->numberBetween(1,3),
                             'started_at'     => '0'                            
-			]);
+			])->topics()->sync([$faker->numberBetween(1,5),$faker->numberBetween(1,5),$faker->numberBetween(1,5)]);
 		}
                 
                 

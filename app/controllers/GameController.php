@@ -1,6 +1,11 @@
 <?php
 
 class GameController extends BaseController {
+    
+        public function __construct(Erudite\Freebase $freebase)
+        {
+            $this->freebase = $freebase;
+        }
 
 	public function index()
 	{
@@ -21,9 +26,8 @@ class GameController extends BaseController {
                     'status',
                     'max_players_num as playersMax', 
                     'room', 
-                    'topics as tags', 
                     'countries as flags', 
-                    'started_at as started')->with('players.user','creator')->get();
+                    'started_at as started')->with('players.user','creator','topics')->get();
             
             return  Response::json($games);
 	}
@@ -48,10 +52,22 @@ class GameController extends BaseController {
 	}
         
         /**
-         * Returns game cards
+         * Starts Game and returns game cards
          */
-        public function listCards()
+        public function start($id)
         {
+            $game = Game::findOrFail($id);
+            
+            /**
+             * Change game status to progress
+             */
+            $game->status = 'progress';
+            $game->save();
+            
+            $this->freebase->setApiKey( Config::get('freebase.apiKey') );
+            
+            $query = new Erudite\Freebase($this->freebase, $queryData);
+            $question = $query->generateQuestion($countries);
             
         }
         

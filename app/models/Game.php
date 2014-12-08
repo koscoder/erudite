@@ -24,6 +24,11 @@ class Game extends \Eloquent {
             return $this->hasMany('Player', 'game_id');
         }
         
+        public function topics()
+        {
+            return $this->belongsToMany('Topic');
+        }
+
         public function getStartedAttribute($value) {
             
             if ($value == '0000-00-00 00:00:00') {
