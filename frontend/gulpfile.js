@@ -30,24 +30,20 @@ gulp.task('static', function () {
 });
 
 
-gulp.task('jsx', function(){
+gulp.task('scripts', function(){
   var b = browserify({
     ignoreGlobals: true,
-    extensions: ['.jsx', '.js']
+    extensions: ['.js']
   });
   var globalShimTransform = globalShim.configure({
-    'react': 'React',
     'lodash': '_',
-    'page': 'page',
     'jQuery': 'jQuery',
-    'storage': 'Store',
     'backbone': 'Backbone',
     'backbone/model': 'Backbone.Model',
     'backbone/collection': 'Backbone.Collection'
   });
-  b.transform(reactify);
   b.transform(globalShimTransform);
-  b.add(src + '/jsx/app.jsx');
+  b.add(src + '/js/app.js');
   return b.bundle()
     .pipe(source('app.js'))
     .pipe(gulp.dest(assets));
@@ -95,8 +91,8 @@ gulp.task('vendors/assets', function () {
   }
 });
 
-gulp.task('watch/jsx', function () {
-  gulp.watch(src + '/jsx/**/*.jsx', ['jsx']);
+gulp.task('watch/scripts', function () {
+  gulp.watch(src + '/js/**/*.js', ['scripts']);
 });
 
 gulp.task('watch/styl', function () {
@@ -111,8 +107,8 @@ gulp.task('watch/vendors', function () {
   gulp.watch(configDir + '/vendors.json', ['vendors']);
 });
 
-gulp.task('watch', ['watch/jsx', 'watch/styl', 'watch/static', 'watch/vendors']);
+gulp.task('watch', ['watch/scripts', 'watch/styl', 'watch/static', 'watch/vendors']);
 gulp.task('vendors', ['vendors/js', 'vendors/css', 'vendors/assets']);
-gulp.task('fast-build', ['static', 'jsx', 'stylus']);
+gulp.task('fast-build', ['static', 'scripts', 'stylus']);
 gulp.task('build', ['vendors', 'fast-build']);
 gulp.task('default', ['build', 'watch']);
