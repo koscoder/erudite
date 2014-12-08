@@ -69,6 +69,7 @@
                                 <h1>Create New Game</h1>
                                 <div class="ui form">
                                     <form id="create-game-form" method="post">
+<div class="ui error message" style="display:none"><ul class="list"></ul></div>
                                         <h4 class="ui dividing header">Game Information</h4>
                                         <div class="two fields">
                                             <div class="field">
@@ -79,7 +80,7 @@
                                                 <div class="two fields">
                                                     <div class="field">
                                                         <label>Game Type</label>
-                                                        <select class="ui dropdown" name="type">
+                                                        <select class="ui dropdown" name="room">
                                                             <option value="">[ Select Game Type ]</option>
                                                             <option value="jostler">Jostler (5 minutes, 15 cards)</option>
                                                             <option value="thief">Thief (10 minutes, 30 cards)</option>
@@ -88,7 +89,7 @@
                                                     </div>
                                                     <div class="field">
                                                         <label>Max number of players</label>
-                                                        <input type="text" name="maxPlayers" placeholder="Max # of players" value="5" />
+                                                        <input type="text" name="max_players_num" placeholder="Max # of players" value="5" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,15 +108,11 @@
                                                     <div class="twelve wide column">
                                                         <div class="field">
                                                             <label>Countries</label>
-                                                            <div id="chartdiv" style="width: 100%; height: 500px;"></div>
-                                                            <div id="countries-list"></div>
+                                                            <div class="countries-list"></div>
                                                         </div>
                                                     </div>    
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="ui error message">
-                                            <div class="header">We noticed some issues</div>
                                         </div>
                                         <div class="ui submit button">Create</div>
                                     </form>

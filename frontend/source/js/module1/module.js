@@ -15,15 +15,41 @@ module.exports = function () {
         });
         
         $('#create-game-form').submit(function(){
-            $(this).parent().addClass('loading');
-            $.post('/api/game/create', $(this).serialize(), function(data) {
-                // ToDo: process on create
-                $(this).parent().removeClass('loading');
+            $el = $(this);
+            $el.parent().addClass('loading');
+            $.post('/api/game/create', $el.serialize(), function(data) {
+                if (typeof data === 'object' && data.status) {
+                  window.location.href = '/games';
+                  return;
+                }
+                $el.parent().removeClass('loading');
+                if (typeof data === 'object' && data.validator) {
+                  var gErrors = [];
+                  $('.ui.error.message', $el).hide();
+                  $('.error.field', $el).removeClass('error');
+                  $.each(data.validator, function (name, errors) {
+                    $('[name='+name+']', $el).parents('.field').first().addClass('error');
+                    gErrors = gErrors.concat(errors);
+                  });
+                  var htmlErrs = '<ul class="list">';
+                  $.each(gErrors, function (i, err) {
+                    htmlErrs +='<li>'+err+'</li>';
+                  });
+                  htmlErrs +='</ul>';
+
+                  console.log(htmlErrs);
+                  $('.error.message', $el)
+                    .html(htmlErrs)
+                    .fadeIn();
+                }
             });
             return false;
         });
         
-        $('#create-game-form .submit').click(function() {$('#create-game-form').submit(); return false;});
+        $('#create-game-form .submit').click(function() {
+          $('#create-game-form').submit();
+          return false;
+        });
         
         loadGames();
         loadConfig();
@@ -121,7 +147,9 @@ module.exports = function () {
                 $('#games-table tbody').append(row);
                 
                 $('button.join-game').click(function() {
-                    loadGame($(this).data('game-id'));
+                    var gameId = $(this).data('game-id');
+                    $('div.app-container > div').hide();
+                    $('#view-game-page').show();
                 });
             });
         });
@@ -131,6 +159,27 @@ module.exports = function () {
     {
         var url = '/api/game/game-options';
         $.get(url, {}, function(data) {
+            $('#create-game-page div.countries-list').empty();
+            $([
+                {id: 'United States of America', title: 'United States of America'},
+                {id: 'Ukraine', title: 'Ukraine'},
+                {id: 'Russia', title: 'Russia'},
+                {id: 'Italy', title: 'Italy'},
+                {id: 'England', title: 'England'},
+                {id: 'Germany', title: 'Germany'},
+                {id: 'France', title: 'France'},
+                {id: 'India', title: 'India'},
+                {id: 'China', title: 'China'},
+                {id: 'Japan', title: 'Japan'}
+              ]).each(function(index, item) {
+                var row = '<div class="field">'
+                            +'<div class="ui toggle checkbox">'
+                            +'<input type="checkbox" checked="checked" name="countries['+item.id+']" />'
+                            +'<label>'+item.title+'</label>'
+                            +'</div></div>';
+                $('#create-game-page div.countries-list').append(row);
+                $('.ui.checkbox').checkbox();
+            });
             $('#create-game-page div.topics-list').empty();
             $(data.topics).each(function(index, item) {
                 var row = '<div class="field">'
@@ -142,12 +191,6 @@ module.exports = function () {
                 $('.ui.checkbox').checkbox();
             });
         });
-    }
-
-    function loadGame(id)
-    {
-        $('div.app-container > div').hide();
-        $('#view-game-page').show();
     }
     
     initApp();

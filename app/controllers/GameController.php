@@ -51,6 +51,13 @@ class GameController extends BaseController {
           
 	}
         
+        public function view($id)
+        {
+            Game::findOrFail($id);
+            $game = Game::find(1)->where('id', '=', $id)->with('players.user')->get();
+            return  Response::json($game);
+        }
+        
         /**
          * Starts Game and returns game cards
          */
@@ -134,7 +141,57 @@ class GameController extends BaseController {
             
             
         }
-        
+
+        /**
+         * Saves new game
+         */
+        public function create()
+        {
+            $data = Input::get();
+
+            $title           = isset($data['title']) ? $data['title'] : '';
+            $room            = isset($data['room']) ? $data['room'] : '';
+            $max_players_num = isset($data['max_players_num']) ? $data['max_players_num'] : '';
+            $countries       = isset($data['countries']) ? $data['countries'] : '';
+
+            $validator = Validator::make(
+                [
+                  'title'           => $title,
+                  'room'            => $room,
+                  'max_players_num' => $max_players_num,
+                  'countries'       => $countries,
+                ],
+                [
+                  'title'           => 'required|min:3',
+                  'room'            => 'required|in:jostler,thief,robber',
+                  'max_players_num' => 'required|between:1,8',
+                  'countries'       => 'array',
+                ]
+            );
+
+            if ($validator->fails()) {
+              return [
+                'status'    => false,
+                'validator' => $validator->messages(),
+              ];
+            }
+
+            $game = new Game;
+            $game->title = $title;
+            $game->room = $room;
+            $game->max_players_num = $max_players_num;
+            $game->countries = json_encode(array_keys($countries));
+
+            $game->status = 'waiting';
+            $game->creator_id = Session::get('user');
+            $game->started_at = 0;
+
+            $game->save();
+            return [
+              'status' => true,
+              'game'   => $game,
+            ];
+        }
 }
 
 
