@@ -108,6 +108,7 @@
                                                         <div class="field">
                                                             <label>Countries</label>
                                                             <div id="chartdiv" style="width: 100%; height: 500px;"></div>
+                                                            <div id="countries-list"></div>
                                                         </div>
                                                     </div>    
                                                 </div>
