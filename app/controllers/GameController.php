@@ -70,7 +70,60 @@ class GameController extends BaseController {
             $question = $query->generateQuestion($countries);
             
         }
-        
+
+        /**
+         * Saves new game
+         */
+        public function create()
+        {
+            $data = Input::get();
+
+            $title           = isset($data['title']) ? $data['title'] : '';
+            $room            = isset($data['room']) ? $data['room'] : '';
+            $status          = isset($data['status']) ? $data['status'] : '';
+            $max_players_num = isset($data['max_players_num']) ? $data['max_players_num'] : '';
+            $countries       = isset($data['countries']) ? $data['countries'] : '';
+
+            $validator = Validator::make(
+                [
+                  'title'           => $title,
+                  'room'            => $room,
+                  'status'          => $status,
+                  'max_players_num' => $max_players_num,
+                  'countries'       => $countries,
+                ],
+                [
+                  'title'           => 'required|min:3',
+                  'room'            => 'required|in:jostler,thief,robber',
+                  'status'          => 'required|in:waiting,progress,closed',
+                  'max_players_num' => 'required|between:1,8',
+                  'countries'       => 'required',
+                ]
+            );
+
+            if ($validator->fails()) {
+              return [
+                'status'    => false,
+                'validator' => $validator->messages(),
+              ];
+            }
+
+            $game = new Game;
+            $game->title = $data['title'];
+            $game->room = $data['room'];
+            $game->status = $data['status'];
+            $game->max_players_num = $data['max_players_num'];
+            $game->countries = $data['countries'];
+
+            $game->creator_id = Session::get('user');
+            $game->started_at = 0;
+
+            $game->save();
+            return [
+              'status' => true,
+              'game'   => $game,
+            ];
+        }
 }
 
 
