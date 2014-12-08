@@ -136,6 +136,27 @@ module.exports = function () {
     {
         var url = '/api/game/game-options';
         $.get(url, {}, function(data) {
+            $('#create-game-page div.countries-list').empty();
+            $([
+                {id: 'United States of America', title: 'United States of America'},
+                {id: 'Ukraine', title: 'Ukraine'},
+                {id: 'Russia', title: 'Russia'},
+                {id: 'Italy', title: 'Italy'},
+                {id: 'England', title: 'England'},
+                {id: 'Germany', title: 'Germany'},
+                {id: 'France', title: 'France'},
+                {id: 'India', title: 'India'},
+                {id: 'China', title: 'China'},
+                {id: 'Japan', title: 'Japan'}
+              ]).each(function(index, item) {
+                var row = '<div class="field">'
+                            +'<div class="ui toggle checkbox">'
+                            +'<input type="checkbox" checked="checked" name="countries['+item.id+']" />'
+                            +'<label>'+item.title+'</label>'
+                            +'</div></div>';
+                $('#create-game-page div.countries-list').append(row);
+                $('.ui.checkbox').checkbox();
+            });
             $('#create-game-page div.topics-list').empty();
             $(data.topics).each(function(index, item) {
                 var row = '<div class="field">'

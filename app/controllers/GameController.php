@@ -141,7 +141,7 @@ class GameController extends BaseController {
                   'title'           => 'required|min:3',
                   'room'            => 'required|in:jostler,thief,robber',
                   'max_players_num' => 'required|between:1,8',
-                  'countries'       => 'required',
+                  'countries'       => 'array',
                 ]
             );
 
@@ -156,7 +156,7 @@ class GameController extends BaseController {
             $game->title = $title;
             $game->room = $room;
             $game->max_players_num = $max_players_num;
-            $game->countries = $countries;
+            $game->countries = json_encode(array_keys($countries));
 
             $game->status = 'waiting';
             $game->creator_id = Session::get('user');
