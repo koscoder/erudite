@@ -84,7 +84,7 @@ module.exports = function () {
                     var area = map.dataProvider.areas[i];
                     if (area.showAsSelected) {
                         states.push(area.title);
-                        $('#countries-list').append('<input type="hidden" id="country_'+area.id+'" name="country[]" value='+area.title+' />');
+                        $('#countries-list').append('<input type="hidden" id="country_'+area.id+'" name="country[]" value='+area.title+'" />');
                     }
                 }
             });
@@ -143,7 +143,12 @@ module.exports = function () {
     
     initApp();
     
-    function createGame()
+    function viewGame()
+    {
+        
+    }
+    
+    function loadGame()
     {
         
     }
