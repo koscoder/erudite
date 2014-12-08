@@ -6,7 +6,7 @@ var Storage = require('storage');
 var GamesList = React.createClass({
   getInitialState: function () {
     Storage.getGamesCollection()
-      .on('change', (function (ctx) {
+      .on('change add remove', (function (ctx) {
         return function () {
           ctx.setState({games: Storage.getGames()});
         };

@@ -1,11 +1,11 @@
 var page = require('page');
-var Storage = require('storage');
 var acl = require('./acl.jsx');
 
 // Modules
 var LoadingPage = require('./loading/loading.jsx');
 var LoginPage = require('./login/login.jsx');
 var LobbyPage = require('./lobby/lobby.jsx');
+var LoadLobbyData = require('./lobby/load-data.js');
 var NotExistsPage = require('./404/404.jsx');
 var Create = require('./create/create.jsx');
 var LoadCreateData = require('./create/load-data.js');
@@ -17,7 +17,7 @@ var route = function (url) {
 };
 
 var init = function (changePage) {
-  route('/games', function () {
+  route('/games', LoadLobbyData, function () {
     changePage(<LobbyPage />);
   });
 
