@@ -316,8 +316,8 @@
                             <div class="four wide column">
                                 <h5 class="ui teal inverted header">APIs</h5>
                                 <div class="ui inverted link list">
-                                    <a class="item" href="https://developers.google.com/chart/" target="_blank">Google Charts</a>
                                     <a class="item" href="https://developers.google.com/freebase/v1/mql-overview" target="_blank">Google Freebase</a>
+                                    <a class="item" href="https://developers.google.com/chart/" target="_blank">Google Charts</a>
                                     <a class="item" href="https://gravatar.com" target="_blank">Gravatar</a>
                                     <a class="item" href="https://dev.twitter.com/web/sign-in" target="_blank">Sign in with Twitter</a>
                                     <a class="item" href="https://developers.facebook.com/docs/facebook-login/v2.2" target="_blank">Facebook Login</a>
