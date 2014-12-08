@@ -13,6 +13,18 @@ module.exports = function () {
             $('.menu a').removeClass('active');
             $(this).addClass('active');
         });
+        
+        $('#create-game-form').submit(function(){
+            $(this).parent().addClass('loading');
+            $.post('/api/game/create', $(this).serialize(), function(data) {
+                // ToDo: process on create
+                $(this).parent().removeClass('loading');
+            });
+            return false;
+        });
+        
+        $('#create-game-form .submit').click(function() {$('#create-game-form').submit(); return false;});
+        
         loadGames();
         loadConfig();
         initMap();
@@ -56,6 +68,12 @@ module.exports = function () {
 
                 // toggle showAsSelected
                 event.mapObject.showAsSelected = !event.mapObject.showAsSelected;
+                
+                if (event.mapObject.showAsSelected) {
+                    $('#countries-list').append('<input type="hidden" id="country_'+event.mapObject.id+'" name="country[]" value="'+event.mapObject.title+'" />');
+                } else {
+                    $('#countries-list #country_'+event.mapObject.id).remove();;
+                }
 
                 // bring it to an appropriate color
                 map.returnInitialColor(event.mapObject);
@@ -66,6 +84,7 @@ module.exports = function () {
                     var area = map.dataProvider.areas[i];
                     if (area.showAsSelected) {
                         states.push(area.title);
+                        $('#countries-list').append('<input type="hidden" id="country_'+area.id+'" name="country[]" value='+area.title+'" />');
                     }
                 }
             });
@@ -79,7 +98,7 @@ module.exports = function () {
                 if (area.title == 'United States') {
                     map.dataProvider.areas[i].showAsSelected = true;
                     map.returnInitialColor(map.dataProvider.areas[i]);
-                    console.log(area.title);
+                    //console.log(area.title);
                 }
             }
         });
@@ -124,7 +143,12 @@ module.exports = function () {
     
     initApp();
     
-    function createGame()
+    function viewGame()
+    {
+        
+    }
+    
+    function loadGame()
     {
         
     }

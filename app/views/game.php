@@ -108,6 +108,7 @@
                                                         <div class="field">
                                                             <label>Countries</label>
                                                             <div id="chartdiv" style="width: 100%; height: 500px;"></div>
+                                                            <div id="countries-list"></div>
                                                         </div>
                                                     </div>    
                                                 </div>
@@ -116,11 +117,13 @@
                                         <div class="ui error message">
                                             <div class="header">We noticed some issues</div>
                                         </div>
-                                        <div class="ui submit button" onclick="$(this).parent().addClass('loading');">Create</div>
+                                        <div class="ui submit button">Create</div>
                                     </form>
                                 </div>
                             </div>
-                            <div id="view-game-page"></div>
+                            <div id="view-game-page">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>
