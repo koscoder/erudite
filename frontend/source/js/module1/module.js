@@ -148,8 +148,39 @@ module.exports = function () {
                 
                 $('button.join-game').click(function() {
                     var gameId = $(this).data('game-id');
-                    $('div.app-container > div').hide();
-                    $('#view-game-page').show();
+                    var url = '/api/game/view/'+gameId;
+                    $.get(url, {}, function(game) {
+                        $('#game-title').text(game.title);
+                        $('#game-players-num').text(game.players.length);
+                        $('#game-max-players-num').text(game.max_players_num);
+                        $('#game-board-players').empty();
+                        
+                        $('#game-countries').empty();
+                        var countries = jQuery.parseJSON( game.countries );
+                        $(countries).each(function(index, item) {
+                            $('#game-countries').append('<i class="'+item.toLowerCase()+' flag"></i>');
+                        });
+                        
+                        $('#game-topics').empty();
+                        var topics = game.topics;
+                        $(topics).each(function(index, item) {
+                            $('#game-topics').append(item.title+' - ');
+                        });
+                        
+                        $(game.players).each(function(index, item) {
+                            $('#game-board-players').append(
+                                            '<div class="item">'
+                                            +'<img class="ui avatar image" src="http://semantic-ui.com/images/avatar/small/daniel.jpg">'
+                                            +'<div class="content">'
+                                                +'<a class="header">'+item.user.name+'</a>'
+                                            +'<div class="description">'+item.score+' Points</div>'
+                                            +'</div>'
+                                            +'</div>');
+                        });
+                        
+                        $('div.app-container > div').hide();
+                        $('#view-game-page').show();
+                    });
                 });
             });
         });
