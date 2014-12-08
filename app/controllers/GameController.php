@@ -15,15 +15,15 @@ class GameController extends BaseController {
 	{
             $games = Game::select('id',
                     'title',
+                    'creator_id',
                     'status',
                     'max_players_num as playersMax', 
                     'room', 
                     'topics as tags', 
                     'countries as flags', 
-                    'started_at as started')->with('players.user')->get();
+                    'started_at as started')->with('players.user','creator')->get();
             
             return  Response::json($games);
-          
 	}       
         
 }
