@@ -70,7 +70,7 @@ module.exports = function () {
                 event.mapObject.showAsSelected = !event.mapObject.showAsSelected;
                 
                 if (event.mapObject.showAsSelected) {
-                    $('#countries-list').append('<input type="hidden" id="country_'+event.mapObject.id+'" name="country[]" value='+event.mapObject.title+' />');
+                    $('#countries-list').append('<input type="hidden" id="country_'+event.mapObject.id+'" name="country[]" value="'+event.mapObject.title+'" />');
                 } else {
                     $('#countries-list #country_'+event.mapObject.id).remove();;
                 }
