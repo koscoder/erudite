@@ -18,6 +18,17 @@ module.exports = function () {
     );
   });
 
+  var gameTypes = _.each(this.state.gameTypes, function (index, gameType) {
+    return React.createElement('option', gameType + '3', {value: index});
+  });
+  var selectTypes = (
+    <select className="ui dropdown" ref="gameTypes" value="0">
+      <option value="0">[ Select Game Type ]</option>
+      <option value="1">Short room</option>
+      {gameTypes}
+    </select>
+  );
+
   return (
     <DefaultLayout>
       <h1>Create New Game</h1>
@@ -32,11 +43,11 @@ module.exports = function () {
             <div className="two fields">
               <div className="field">
                 <label>Game Type</label>
-                <select className="ui dropdown" name="type">
-                  <option value="">[ Select Game Type ]</option>
-                  <option value="1">Short game</option>
-                  <option value="2">Standard game</option>
-                  <option value="3">Long game</option>
+                <select className="ui dropdown" value="0">
+                  <option value="0">[ Select Game Type ]</option>
+                  <option value="jostler">Jostler (5 minutes, 15 cards)</option>
+                  <option value="thief">Thief (10 minutes, 30 cards)</option>
+                  <option value="robber">Robber (20 minutes, 60 cards)</option>
                 </select>
               </div>
               <div className="field">

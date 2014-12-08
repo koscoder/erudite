@@ -21,7 +21,7 @@ var Create = React.createClass({
   },
   componentDidMount: function () {
     this._initCheckboxes();
-    this._initDropdowns();
+    //this._initDropdowns();
     this._initRegions();
   },
   componentDidUpdate: function () {
@@ -34,8 +34,7 @@ var Create = React.createClass({
     $('.checkbox', topics).checkbox();
   },
   _initDropdowns: function () {
-    var mainInfo = this.refs.mainInfo.getDOMNode();
-    $('.dropdown', mainInfo).dropdown();
+    $('select.ui.dropdown').dropdown();
   },
   _initRegions: function () {
     var regions = this.refs.regions.getDOMNode();
