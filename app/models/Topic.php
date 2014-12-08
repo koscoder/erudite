@@ -11,4 +11,9 @@ class Topic extends \Eloquent {
         {
             return $this->belongsToMany('Game');
         }
+        
+        public function queries()
+        {
+            return $this->hasMany('Query');
+        }
 }
