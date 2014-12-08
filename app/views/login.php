@@ -4,15 +4,8 @@
         <title>Erudite online quiz</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
         <link rel="stylesheet" href="./assets/vendors.css" />
         <link rel="stylesheet" href="./assets/app.css" />
-
-        <link rel="stylesheet" href="./assets/js/ammap/ammap.css" type="text/css">
-        <script src="./assets/js/ammap/ammap.js" type="text/javascript"></script>
-        <!-- map file should be included after ammap.js -->
-        <script src="./assets/js/ammap/maps/js/worldLow.js" type="text/javascript"></script>
-
     </head>
     <body>
         <div class="pusher">
@@ -28,7 +21,7 @@
                                         <form class="ui form" id="login-form" method="post" action="/login">
                                             <div class="ui action input massive">
                                                 <input name="name" type="text" placeholder="Username">
-                                                <div class="ui button green" onclick="$('#login-form').submit();">Sign-in</div>
+                                                <div class="ui button green" onclick="javascript:document.getElementById('login-form').submit();">Sign-in</div>
                                             </div>
                                         </form>
                                     </div>
@@ -78,21 +71,3 @@
         </div>
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-    <body id="login-page">
-        <div class="pusher">
-            <div class="full height">
-            </div>
-        </div>
-    </body>
-</html>
-
-
