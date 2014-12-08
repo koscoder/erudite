@@ -116,7 +116,7 @@
                                         <div class="ui error message">
                                             <div class="header">We noticed some issues</div>
                                         </div>
-                                        <div class="ui submit button" onclick="$(this).parent().addClass('loading');">Create</div>
+                                        <div class="ui submit button">Create</div>
                                     </form>
                                 </div>
                             </div>

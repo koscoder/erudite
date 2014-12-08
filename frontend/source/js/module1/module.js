@@ -13,6 +13,17 @@ module.exports = function () {
             $('.menu a').removeClass('active');
             $(this).addClass('active');
         });
+        
+        $('#create-game-form').submit(function(){
+            $(this).parent().addClass('loading');
+            $.post('/api/game/create', $(this).serialize(), function(data) {
+                // ToDo: process on create
+                $(this).parent().removeClass('loading');
+            });
+        });
+        
+        $('#create-game-form .submit').click($('#create-game-form').submit());
+        
         loadGames();
         loadConfig();
         initMap();
