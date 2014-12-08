@@ -121,7 +121,9 @@ module.exports = function () {
                 $('#games-table tbody').append(row);
                 
                 $('button.join-game').click(function() {
-                    loadGame($(this).data('game-id'));
+                    var gameId = $(this).data('game-id');
+                    $('div.app-container > div').hide();
+                    $('#view-game-page').show();
                 });
             });
         });
@@ -142,12 +144,6 @@ module.exports = function () {
                 $('.ui.checkbox').checkbox();
             });
         });
-    }
-
-    function loadGame(id)
-    {
-        $('div.app-container > div').hide();
-        $('#view-game-page').show();
     }
     
     initApp();
