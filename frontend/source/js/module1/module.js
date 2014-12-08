@@ -116,9 +116,13 @@ module.exports = function () {
                             +'<td>'+item.room+'</td>'
                             +'<td>[Films]</td>'
                             +'<td><i class="ua flag"></i> <i class="belarus flag"></i> <i class="ru flag"></i></td>'
-                            +'<td><button class="button ui green" onclick="loadGame('+item.id+');">Join</button></td>'
+                            +'<td><button class="button ui green join-game" data-game-id="'+item.id+'">Join</button></td>'
                             +'</tr>';
                 $('#games-table tbody').append(row);
+                
+                $('button.join-game').click(function() {
+                    loadGame($(this).data('game-id'));
+                });
             });
         });
     }
@@ -140,16 +144,11 @@ module.exports = function () {
         });
     }
 
+    function loadGame(id)
+    {
+        $('div.app-container > div').hide();
+        $('#view-game-page').show();
+    }
     
     initApp();
-    
-    function viewGame()
-    {
-        
-    }
-    
-    function loadGame()
-    {
-        
-    }
 };

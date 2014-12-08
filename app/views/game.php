@@ -122,7 +122,170 @@
                                 </div>
                             </div>
                             <div id="view-game-page">
-                                
+
+                            <h1>Game "%TITLE%"</h1>
+                            <div class="sixteen wide column">
+                                <div class="ui stackable inverted divided relaxed grid">
+                                    <div class="four wide column">
+                                        <h4>Time Left</h4>
+                                        <h1><i class="icon wait"></i> 12:56</h1>
+                                        <h4>Game Information</h4>
+                                        <p>Type: Short game</p>
+                                        <p>Countries: <i class="ua flag"></i> <i class="belarus flag"></i> <i class="ru flag"></i></p>
+                                        <p>Topic: Films</p>
+                                        <h4>Players List 5/6</h4>
+                                        <div class="ui divided list" id="game-board-players">
+                                            <div class="item">
+                                                <img class="ui avatar image" src="http://semantic-ui.com/images/avatar/small/daniel.jpg">
+                                                <div class="content">
+                                                    <a class="header">Daniel Louise [Creator]</a>
+                                                    <div class="description">0 Points</div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <img class="ui avatar image" src="http://semantic-ui.com/images/avatar/small/stevie.jpg">
+                                                <div class="content">
+                                                    <a class="header">Stevie Feliciano</a>
+                                                    <div class="description">0 Points</div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <img class="ui avatar image" src="http://semantic-ui.com/images/avatar/small/elliot.jpg">
+                                                <div class="content">
+                                                    <a class="header">Elliot Fu</a>
+                                                    <div class="description">0 Points</div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <img class="ui avatar image" src="http://semantic-ui.com/images/avatar/small/jenny.jpg">
+                                                <div class="content">
+                                                    <a class="header">Jenny Hess</a>
+                                                    <div class="description">0 Points</div>
+                                                </div>
+                                            </div>
+                                            <div class="item">
+                                                <img class="ui avatar image" src="http://semantic-ui.com/images/avatar/small/veronika.jpg">
+                                                <div class="content">
+                                                    <a class="header">Veronika Ossi</a>
+                                                    <div class="description">0 Points</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="twelve wide column game-board-active" id="game-board-questions">
+                                        <h4>Questions</h4>
+                                        <div class="ui segment">
+                                            <div class="ui five column grid">
+                                                <div class="column">
+                                                    <div class="ui segment green inverted center aligned card">
+                                                        <h1><i class="icon checkmark"></i></h1>
+                                                        <p>+500 points</p>
+                                                        <p>You</p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment red inverted center aligned card">
+                                                        <h1><i class="icon remove"></i></h1>
+                                                        <p>-300 points</p>
+                                                        <p>You</p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment center aligned card">
+                                                        <h1><i class="icon remove"></i></h1>
+                                                        <p>-250 points</p>
+                                                        <p><i>Stevie Feliciano</i></p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment center aligned card">
+                                                        <h1><i class="icon checkmark"></i></h1>
+                                                        <p>+250 points</p>
+                                                        <p><i>Veronika Ossi</i></p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment blue inverted center aligned card">
+                                                        <h1><i class="icon">?</i></h1>
+                                                        <p>300 points</p>
+                                                        <p>New</p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment blue inverted center aligned card">
+                                                        <h1><i class="icon">?</i></h1>
+                                                        <p>200 points</p>
+                                                        <p>New</p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment blue inverted center aligned card">
+                                                        <h1><i class="icon">?</i></h1>
+                                                        <p>150 points</p>
+                                                        <p>New</p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment green inverted center aligned card">
+                                                        <h1><i class="icon checkmark"></i></h1>
+                                                        <p>+500 points</p>
+                                                        <p>You</p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment red inverted center aligned card">
+                                                        <h1><i class="icon remove"></i></h1>
+                                                        <p>-300 points</p>
+                                                        <p>You</p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment center aligned card">
+                                                        <h1><i class="icon remove"></i></h1>
+                                                        <p>-250 points</p>
+                                                        <p><i>Stevie Feliciano</i></p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment center aligned card">
+                                                        <h1><i class="icon checkmark"></i></h1>
+                                                        <p>+250 points</p>
+                                                        <p><i>Veronika Ossi</i></p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment blue inverted center aligned card">
+                                                        <h1><i class="icon">?</i></h1>
+                                                        <p>150 points</p>
+                                                        <p>New</p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment blue inverted center aligned card">
+                                                        <h1><i class="icon">?</i></h1>
+                                                        <p>100 points</p>
+                                                        <p>New</p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment blue inverted center aligned card">
+                                                        <h1><i class="icon">?</i></h1>
+                                                        <p>400 points</p>
+                                                        <p>New</p>
+                                                    </div>
+                                                </div>
+                                                <div class="column">
+                                                    <div class="ui segment blue inverted center aligned card">
+                                                        <h1><i class="icon">?</i></h1>
+                                                        <p>800 points</p>
+                                                        <p>New</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             </div>
                         </div>
                     </div>
