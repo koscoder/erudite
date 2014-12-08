@@ -10,6 +10,10 @@ class GamesTableSeeder extends Seeder {
 		
                 DB::table('games')->delete();
                 
+                $countries = [
+                    'Ukraine','United States of America','Germany','United Kingdom','Hong Kong','India','France','Russia','Netherlands'
+                ];
+                
                 $faker = Faker::create();
 
 		foreach(range(1, 10) as $index)
@@ -19,8 +23,7 @@ class GamesTableSeeder extends Seeder {
                             'room'           => $faker->randomElement(['jostler', 'thief', 'robber']),
                             'status'         => $faker->randomElement(['waiting', 'progress', 'closed']),
                             'max_players_num' => $faker->numberBetween(1,3),
-                            'countries'      => json_encode([$faker->randomElement(
-                                                [$faker->countryCode,$faker->countryCode,$faker->countryCode]), $faker->countryCode]),
+                            'countries'      => json_encode([$faker->randomElement($countries)]),
                             'creator_id'     => $faker->numberBetween(1,3),
                             'started_at'     => '0'                            
 			])->topics()->sync([$faker->numberBetween(1,5),$faker->numberBetween(1,5),$faker->numberBetween(1,5)]);
