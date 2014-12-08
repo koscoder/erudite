@@ -4,34 +4,26 @@
         <title>Erudite online quiz</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link rel="stylesheet" href="./assets/vendors.css" />
         <link rel="stylesheet" href="./assets/app.css" />
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+        <link rel="stylesheet" href="./assets/js/ammap/ammap.css" type="text/css">
+        <script src="./assets/js/ammap/ammap.js" type="text/javascript"></script>
+        <!-- map file should be included after ammap.js -->
+        <script src="./assets/js/ammap/maps/js/worldLow.js" type="text/javascript"></script>
+
     </head>
-    <body id="login-page">
+    <body>
         <div class="pusher">
             <div class="full height">
-                <div class="bar light fixed">
-                    <div class="ui page grid">
-                        <div class="column">
-                            <div class="ui logo shape">
-                                <div class="sides">
-                                    <div class="ui side active">
-                                        <img class="ui image" src="./assets/images/logo.png">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 <div class="ui vertical feature segment">
                     <div class="ui centered page grid">
                         <div class="sixteen wide column">
                             <div class="ui vertical login-form">
                                 <div class="ui center aligned page grid">
                                     <div class="column">
-                                        <h1 class="ui header inverted">Erudite is an e-learning quiz platform. Interested? Sign-in to start</h1>
+                                        <h1 class="ui header">Erudite is an e-learning quiz platform. Interested? Sign-in to start</h1>
                                         <?php echo $errors->first('name');?>
                                         <form class="ui form" id="login-form" method="post" action="/login">
                                             <div class="ui action input massive">
@@ -45,6 +37,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
             <div class="ui vertical inverted black footer segment">
@@ -56,7 +49,7 @@
                                 <h3 class="ui inverted header">Developed by CodeTiburon</h3>
                                 <p>For the world's first global virtual #hackathon</p>
                                 <p><i>No matter how good your existing software is, we can make it better.</i></p>
-                                <a href="http://codetiburon.com/" target="_blank"><img class="ui image logo" src="./assets/images/logo-footer.png" /></a>
+                                <a href="http://codetiburon.com/" target="_blank"><img class="ui image logo" src="/assets/images/logo-footer.png" /></a>
                             </div>
                             <div class="four wide column">
                                 <h5 class="ui teal inverted header">About</h5>
@@ -81,6 +74,22 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </body>
+</html>
+
+
+
+
+
+
+
+
+
+    <body id="login-page">
+        <div class="pusher">
+            <div class="full height">
             </div>
         </div>
     </body>

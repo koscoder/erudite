@@ -23,7 +23,7 @@
                             <div class="ui logo shape">
                                 <div class="sides">
                                     <div class="ui side active">
-                                        <img class="ui image" src="/html/images/logo.png">
+                                        <img class="ui image" src="/assets/images/logo.png">
                                     </div>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
                                 <h3 class="ui inverted header">Developed by CodeTiburon</h3>
                                 <p>For the world's first global virtual #hackathon</p>
                                 <p><i>No matter how good your existing software is, we can make it better.</i></p>
-                                <a href="http://codetiburon.com/" target="_blank"><img class="ui image logo" src="images/logo-footer.png" /></a>
+                                <a href="http://codetiburon.com/" target="_blank"><img class="ui image logo" src="/assets/images/logo-footer.png" /></a>
                             </div>
                             <div class="four wide column">
                                 <h5 class="ui teal inverted header">About</h5>
