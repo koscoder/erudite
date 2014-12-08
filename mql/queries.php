@@ -1,7 +1,7 @@
 <?php
 
 $mqlList = array(
-    'music' => array(
+    'Music' => array(
         array(
             'question' => 'Who has recorded "%object%" album?',
 
@@ -37,7 +37,7 @@ $mqlList = array(
             'optionsPath' => 'name',
         )
     ),
-    'books' => array(
+    'Books' => array(
         array(
             'question' => 'Who is the author of "%object%"?',
             
@@ -67,7 +67,7 @@ $mqlList = array(
             'optionsPath' => '/book/written_work/author',
         )
     ),
-    'films' => array(
+    'Films' => array(
         array(
             'question' => '"%object%" is directed by ..',
             
@@ -105,7 +105,7 @@ $mqlList = array(
             'optionsPath' => '/film/film/directed_by',
         )
     ),
-    'paintings' => array(
+    'Paintings' => array(
         array(
             'question' => 'Who is a painter of "%object%"?',
             
@@ -129,7 +129,7 @@ $mqlList = array(
         )
     ),
     
-    'military_conflicts' => array(
+    'Military conflicts' => array(
         array(
             'question' => 'When did the "%object%" (military conflict) start?',
             
@@ -165,4 +165,4 @@ $mqlList = array(
     )
 );
 
-?>
+return $mqlList;

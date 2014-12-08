@@ -4,6 +4,8 @@ class GameController extends BaseController {
 
 	public function index()
 	{
+            
+                       
             return View::make('game');
 	}
         
@@ -44,6 +46,14 @@ class GameController extends BaseController {
             return  Response::json($config);
           
 	}
+        
+        /**
+         * Returns game cards
+         */
+        public function listCards()
+        {
+            
+        }
         
 }
 

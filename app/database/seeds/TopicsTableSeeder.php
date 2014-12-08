@@ -4,7 +4,9 @@ class TopicsTableSeeder extends Seeder {
 
 	public function run()
 	{
-		$rows = array(
+		DB::table('topics')->delete();
+            
+                $rows = array(
                     array('title'=>'Films'),
                     array('title'=>'Books'),
                     array('title'=>'Music'),

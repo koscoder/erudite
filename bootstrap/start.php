@@ -69,6 +69,14 @@ $framework = $app['path.base'].
 
 require $framework.'/Illuminate/Foundation/start.php';
 
+/*
+|--------------------------------------------------------------------------
+| Load library
+|--------------------------------------------------------------------------
+|
+*/
+
+require 'ioc.php';
 
 
 /*

@@ -6,10 +6,10 @@ class Player extends \Eloquent {
         
         public $timestamps = false;
         
-        // TODO:
+        
         public function user()
         {
-            return $this->hasOne('User', 'id', 'player_id');
+            return $this->belongsTo('User', 'player_id', 'id');
         }
         
         public function game()
