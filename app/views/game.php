@@ -121,7 +121,9 @@
                                     </form>
                                 </div>
                             </div>
-                            <div id="view-game-page"></div>
+                            <div id="view-game-page">
+                                
+                            </div>
                         </div>
                     </div>
                 </div>

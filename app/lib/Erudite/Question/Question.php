@@ -1,5 +1,5 @@
 <?php
-namespace Erudite;
+namespace Erudite\Question;
 
 class Question {
     public $question = '';

@@ -57,6 +57,31 @@ class GameController extends BaseController {
         public function start($id)
         {
             $game = Game::findOrFail($id);
+                        
+            $this->freebase->setApiKey( Config::get('freebase.apiKey') );
+            
+            //$topics = $game->topics->lists('title');
+            
+            $countries = json_decode($game->countries);
+            
+            $questionList = [];
+            
+            foreach ($game->topics as $topic) 
+            {
+                //dd($topic->queries->toArray());
+                
+                foreach ($topic->queries->toArray() as $row) 
+                {
+                    $query = new Erudite\Question\Query($this->freebase, 
+                        ['question'    => $row['template'],
+                         'query'       => $row['query'],
+                         'objectPath'  => $row['object_path'],
+                         'optionsPath' => $row['options_path']]
+                    );
+                    
+                    $questionList[] = $query->generateQuestion($countries);
+                }
+            }
             
             /**
              * Change game status to progress
@@ -64,10 +89,8 @@ class GameController extends BaseController {
             $game->status = 'progress';
             $game->save();
             
-            $this->freebase->setApiKey( Config::get('freebase.apiKey') );
+            return Response::json($questionList);
             
-            $query = new Erudite\Freebase($this->freebase, $queryData);
-            $question = $query->generateQuestion($countries);
             
         }
 
