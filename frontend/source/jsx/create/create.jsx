@@ -37,36 +37,72 @@ var Create = React.createClass({
     $('select.ui.dropdown').dropdown();
   },
   _initRegions: function () {
-    var regions = this.refs.regions.getDOMNode();
-    var script = document.createElement('script');
+console.log('regions');
+                var map;
+                var selectedRegions;
+                AmCharts.ready(function() {
+                    map = new AmCharts.AmMap();
+                    map.pathToImages = "http://www.amcharts.com/lib/3/images/";
+                    map.panEventsEnabled = true;
+                    map.backgroundColor = "#666666";
+                    map.backgroundAlpha = 1;
 
-    script.onload = function () {
-      script.remove();
+                    map.zoomControl.panControlEnabled = true;
+                    map.zoomControl.zoomControlEnabled = true;
 
-      var drawRegionsMap = function () {
-        var data = google.visualization.arrayToDataTable([
-            ['Country', 'Clickable'],
-            ['Germany', 1],
-            ['United States', 1],
-            ['Brazil', 1],
-            ['Canada', 1],
-            ['France', 1],
-            ['RU', 1]
-        ]);
+                    var dataProvider = {
+                    map: "worldLow",
+                        getAreasFromMap: true
+                    };
 
-        var options = {};
-        var chart = new google.visualization.GeoChart(regions);
-        chart.draw(data, options);
-      };
+                    map.dataProvider = dataProvider;
 
-      // TODO: google.load removes document.body element/.
-      return;
-      google.load('visualization', '1', {packages: ['geochart']});
-      google.setOnLoadCallback(drawRegionsMap);
-    };
+                    map.areasSettings = {
+                        autoZoom: false,
+                        color: "#CDCDCD",
+                        colorSolid: "#5EB7DE",
+                        selectedColor: "#5EB7DE",
+                        outlineColor: "#666666",
+                        rollOverColor: "#88CAE7",
+                        rollOverOutlineColor: "#FFFFFF",
+                        selectable: true
+                    };
 
-    script.src = "https://www.google.com/jsapi";
-    document.body.appendChild(script);
+                    map.addListener('clickMapObject', function (event) {
+                        // deselect the area by assigning all of the dataProvider as selected object
+                        map.selectedObject = map.dataProvider;
+
+                        // toggle showAsSelected
+                        event.mapObject.showAsSelected = !event.mapObject.showAsSelected;
+
+                        // bring it to an appropriate color
+                        map.returnInitialColor(event.mapObject);
+
+                        // let's build a list of currently selected states
+                        var states = [];
+                        for (var i in map.dataProvider.areas) {
+                            var area = map.dataProvider.areas[i];
+                            if (area.showAsSelected) {
+                                states.push(area.title);
+                            }
+                        }
+                        console.log(states);
+                    });
+                    
+
+                    map.write($('div.worldmap'));
+                    
+                    for (var i in map.dataProvider.areas) {
+                        var area = map.dataProvider.areas[i];
+                        
+                        if (area.title == 'United States') {
+                            map.dataProvider.areas[i].showAsSelected = true;
+                            map.returnInitialColor(map.dataProvider.areas[i]);
+                            console.log(area.title);
+                        }
+                    }
+                });
+
   }
 });
 

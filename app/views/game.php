@@ -4,6 +4,12 @@
   <title>Erudite online quiz</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link rel="stylesheet" href="./assets/js/ammap/ammap.css" type="text/css">
+  <script src="./assets/js/ammap/ammap.js" type="text/javascript"></script>
+  <!-- map file should be included after ammap.js -->
+  <script src="./assets/js/ammap/maps/js/worldLow.js" type="text/javascript"></script>
+  
   <link rel="stylesheet" href="./assets/vendors.css" />
   <link rel="stylesheet" href="./assets/app.css" />
 </head>

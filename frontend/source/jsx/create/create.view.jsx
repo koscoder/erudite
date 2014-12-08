@@ -70,7 +70,7 @@ module.exports = function () {
               <div className="twelve wide column">
                 <div className="field">
                   <label>Countries</label>
-                  <div ref="regions" style={regionsStyle}></div>
+                  <div className="worldmap"></div>
                 </div>
               </div>  
             </div>
