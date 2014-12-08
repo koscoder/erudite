@@ -2,7 +2,6 @@ module.exports = function () {
     
     function initApp()
     {
-        $('.ui.checkbox').checkbox();
         $('select.dropdown').dropdown();
         
         $('div.app-container > div').hide();
@@ -15,6 +14,75 @@ module.exports = function () {
             $(this).addClass('active');
         });
         loadGames();
+        loadConfig();
+        initMap();
+    }
+    
+    function initMap()
+    {
+        var map;
+        var selectedRegions;
+        AmCharts.ready(function() {
+            map = new AmCharts.AmMap();
+            map.pathToImages = "http://www.amcharts.com/lib/3/images/";
+            map.panEventsEnabled = true;
+            map.backgroundColor = "#666666";
+            map.backgroundAlpha = 1;
+
+            map.zoomControl.panControlEnabled = true;
+            map.zoomControl.zoomControlEnabled = true;
+
+            var dataProvider = {
+            map: "worldLow",
+                getAreasFromMap: true
+            };
+
+            map.dataProvider = dataProvider;
+
+            map.areasSettings = {
+                autoZoom: false,
+                color: "#CDCDCD",
+                colorSolid: "#5EB7DE",
+                selectedColor: "#5EB7DE",
+                outlineColor: "#666666",
+                rollOverColor: "#88CAE7",
+                rollOverOutlineColor: "#FFFFFF",
+                selectable: true
+            };
+
+            map.addListener('clickMapObject', function (event) {
+                // deselect the area by assigning all of the dataProvider as selected object
+                map.selectedObject = map.dataProvider;
+
+                // toggle showAsSelected
+                event.mapObject.showAsSelected = !event.mapObject.showAsSelected;
+
+                // bring it to an appropriate color
+                map.returnInitialColor(event.mapObject);
+
+                // let's build a list of currently selected states
+                var states = [];
+                for (var i in map.dataProvider.areas) {
+                    var area = map.dataProvider.areas[i];
+                    if (area.showAsSelected) {
+                        states.push(area.title);
+                    }
+                }
+            });
+
+
+            map.write("chartdiv");
+
+            for (var i in map.dataProvider.areas) {
+                var area = map.dataProvider.areas[i];
+
+                if (area.title == 'United States') {
+                    map.dataProvider.areas[i].showAsSelected = true;
+                    map.returnInitialColor(map.dataProvider.areas[i]);
+                    console.log(area.title);
+                }
+            }
+        });
     }
     
     function loadGames()
@@ -35,7 +103,25 @@ module.exports = function () {
             });
         });
     }
+    
+    function loadConfig()
+    {
+        var url = '/api/game/game-options';
+        $.get(url, {}, function(data) {
+            $('#create-game-page div.topics-list').empty();
+            $(data.topics).each(function(index, item) {
+                var row = '<div class="field">'
+                            +'<div class="ui toggle checkbox">'
+                            +'<input type="checkbox" checked="checked" name="topics['+item.id+']" />'
+                            +'<label>'+item.title+'</label>'
+                            +'</div></div>';
+                $('#create-game-page div.topics-list').append(row);
+                $('.ui.checkbox').checkbox();
+            });
+        });
+    }
 
+    
     initApp();
     
     function createGame()
