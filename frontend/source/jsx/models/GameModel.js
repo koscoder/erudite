@@ -26,6 +26,14 @@ var GameModel = BackboneModel.extend({
     return this.get('players');
   },
 
+  getQuestions: function () {
+    return [{
+      by: null,
+      status: 'new',
+      points: 500
+    }];
+  },
+
   GAME_WAITING: GAME_WAITING,
   GAME_PROGRESS: GAME_PROGRESS,
   GAME_CLOSED: GAME_CLOSED,

@@ -5,6 +5,9 @@ var Backbone = require('backbone');
 // Collections
 var GamesCollection = require('./collections/GamesCollection.js');
 
+// Mocks
+var rooms = require('./mocks/rooms.js');
+
 // Storage
 var Storage = _.extend({}, Backbone.Events, {
     games : new GamesCollection(),
@@ -75,6 +78,11 @@ var Storage = _.extend({}, Backbone.Events, {
 
     getGame : function (id) {
       return this.getGamesCollection().get(+id);
+    },
+    
+    loadRoom: function (id, callback) {
+      this.trigger('load:room/' + id, rooms[1]);
+      callback(rooms[1]);
     }
 });
 

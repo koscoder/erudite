@@ -10,6 +10,7 @@ var NotExistsPage = require('./404/404.jsx');
 var Create = require('./create/create.jsx');
 var LoadCreateData = require('./create/load-data.js');
 var Game = require('./game/game.jsx');
+var LoadGame = require('./game/load-game.jsx');
 
 var route = function (url) {
   var chain = window.Array.prototype.slice.call(arguments, 1);
@@ -33,7 +34,7 @@ var init = function (changePage) {
     changePage(<Create />);
   });
 
-  route('/game/:id', function (ctx) {
+  route('/game/:id', LoadGame, function (ctx) {
     changePage(<Game id={ctx.params.id} />);
   });
 
